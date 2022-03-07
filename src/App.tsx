@@ -1,11 +1,7 @@
-import NavigationBar from "./components/NavigationBar/NavigationBar";
+import ProfileUserPage from "./pages/ProfileUserPage/ProfileUserPage";
 
 function App() {
-  return (
-    <div className="App">
-      <NavigationBar />
-    </div>
-  );
+  return <ProfileUserPage />;
 }
 
 export default App;

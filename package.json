@@ -20,17 +20,21 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --passWithNoTests",
+    "test": "react-scripts test",
+    "test-watch": "react-scripts test --watchAll",
+    "test-coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/*.test.js",
-      "!src/index.js",
-      "!src/reportWebVitals.js",
-      "!src/setupTests.js"
+      "src/**/*.tsx",
+      "src/**/*.ts",
+      "!src/**/*.test.tsx",
+      "!src/**/*.test.ts",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts",
+      "!src/setupTests.ts"
     ]
   },
   "eslintConfig": {
