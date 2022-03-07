@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-const NavigationBar = () => {
+const NavigationBar: React.FC = () => {
   return (
     <div>
       <ul className="flex flex-row h-16 pl-9 pr-9 justify-between items-center">
         <li>
           <Link to="/home">
             <div className="flex flex-row w-9 h-auto justify-between items-center">
-              <img src="cositoNaranja.svg" />
+              <img src="cositoNaranja.svg" alt="orange thingy pet" />
               <span className="font-bold ml-2 text-lg">Codespace</span>
             </div>
           </Link>
