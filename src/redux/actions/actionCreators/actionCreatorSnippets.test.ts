@@ -10,7 +10,7 @@ describe("Given a createSnippetToGlobalCollection action", () => {
     test("Then it should return an action with the snippetPayload", () => {
       const snippetPayload: snippetInterface = {
         language: "JavaScript",
-        textCode: "console.log('hi')",
+        textCode: "confdsfasdfsdog('hi')",
         title: "A console that says hi",
       };
       const expectedActionWithSnippetPayload: addSnippetToGlobalCollection = {

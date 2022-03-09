@@ -1,3 +1,4 @@
+import snippetInterface from "../../interfaces/snippetInterface";
 import actionTypesUser from "../actionTypes/actionTypesUser";
 import {
   loadUserSnippetAction,
@@ -7,14 +8,30 @@ import {
 describe("Given a loadUserSnippetCollectionAction", () => {
   describe("When it receives a userIdPayload", () => {
     test("Then it should return an action with the right form", () => {
-      const userIdPayload: string = "superId43";
+      const userSnippetCollectionPayload: snippetInterface[] = [
+        {
+          title: "i am super interesting",
+          textCode: "consoleg trikitraka",
+          language: "JavaScript",
+        },
+        {
+          title: "iam almost done",
+          textCode: "i am not coding i am suffering",
+          language: "TypeScript",
+        },
+        {
+          title: "Now i am beter",
+          textCode: "wabalabadubdub",
+          language: "TypeScript",
+        },
+      ];
       const actionRightForm: loadUserSnippetAction = {
         type: actionTypesUser.loadUsersnippets,
-        userIdPayload,
+        userSnippetCollectionPayload,
       };
 
       const createdAction: loadUserSnippetAction =
-        loadUserSnippetCollectionAction(userIdPayload);
+        loadUserSnippetCollectionAction(userSnippetCollectionPayload);
 
       expect(createdAction).toEqual(actionRightForm);
     });

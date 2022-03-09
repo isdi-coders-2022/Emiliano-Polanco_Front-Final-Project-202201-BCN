@@ -1,12 +1,13 @@
+import snippetInterface from "../../interfaces/snippetInterface";
 import actionTypesUser from "../actionTypes/actionTypesUser";
 export interface loadUserSnippetAction {
   type: string;
-  userIdPayload: string;
+  userSnippetCollectionPayload: snippetInterface[];
 }
 
 export const loadUserSnippetCollectionAction = (
-  userIdPayload: string
+  userSnippetCollectionPayload: snippetInterface[]
 ): loadUserSnippetAction => ({
   type: actionTypesUser.loadUsersnippets,
-  userIdPayload,
+  userSnippetCollectionPayload,
 });
