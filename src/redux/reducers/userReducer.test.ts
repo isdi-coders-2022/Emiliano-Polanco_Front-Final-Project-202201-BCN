@@ -76,9 +76,38 @@ describe("Given a userReducer", () => {
         ],
       };
 
-      const action: loadUserSnippetAction = {
+      const action = {
         type: actionTypesUser.loadUsersnippets,
         userSnippetCollectionPayload,
+      };
+
+      const receivedUserState = userReducer(currentUserState, action);
+
+      expect(receivedUserState).toEqual(expectedUserState);
+    });
+  });
+
+  describe("When it receives no action", () => {
+    test("Then it should return the currentUserState", () => {
+      const expectedUserState: userInterface = {
+        name: "Giorno",
+        lastname: "Giovanna",
+        username: "goldenWind",
+        email: "goldoj@gmail.com",
+        password: "pass123",
+        pet: "basic",
+        membership: "basic",
+        scoreHistoryWpm: [],
+        snippetsJavaScript: [],
+        snippetsPhyton: [],
+        snippetsCsharp: [],
+        scoreHistoryAccuracy: [],
+        scoreHistoryPerCharacter: [],
+        snippetsTypeScript: [],
+      };
+
+      const action: AnyAction = {
+        type: "let wee how the default case works",
       };
 
       const receivedUserState = userReducer(currentUserState, action);
