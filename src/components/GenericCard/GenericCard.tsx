@@ -10,7 +10,7 @@ const GenericCard: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUserSnippetCollectionThunk);
-  }, []);
+  }, [dispatch]);
 
   const userData: userInterface = useSelector((state: RootState) => state.user);
 
