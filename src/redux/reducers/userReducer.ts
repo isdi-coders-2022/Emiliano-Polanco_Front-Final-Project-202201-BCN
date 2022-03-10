@@ -17,6 +17,7 @@ const guestUser: userInterface = {
   scoreHistoryAccuracy: [],
   scoreHistoryPerCharacter: [], //ojuuu ehhh que eesto esta mal y hay que revisarlo
   snippetsTypeScript: [],
+  snippetsCollection: [],
 };
 
 const userReducer = (
@@ -40,6 +41,7 @@ const userReducer = (
         ...currentUser,
         snippetsJavaScript: jsSnippets,
         snippetsTypeScript: tsSnippets,
+        snippetsCollection: action.userSnippetCollectionPayload,
       };
       break;
     default:
