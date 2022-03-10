@@ -20,6 +20,7 @@ const currentUserState: userInterface = {
   scoreHistoryAccuracy: [],
   scoreHistoryPerCharacter: [],
   snippetsTypeScript: [],
+  snippetsCollection: [],
 };
 
 describe("Given a userReducer", () => {
@@ -74,6 +75,23 @@ describe("Given a userReducer", () => {
             language: "TypeScript",
           },
         ],
+        snippetsCollection: [
+          {
+            title: "i am super interesting",
+            textCode: "consoleg trikitraka",
+            language: "JavaScript",
+          },
+          {
+            title: "iam almost done",
+            textCode: "i am not coding i am suffering",
+            language: "TypeScript",
+          },
+          {
+            title: "Now i am beter",
+            textCode: "wabalabadubdub",
+            language: "TypeScript",
+          },
+        ],
       };
 
       const action = {
@@ -104,6 +122,7 @@ describe("Given a userReducer", () => {
         scoreHistoryAccuracy: [],
         scoreHistoryPerCharacter: [],
         snippetsTypeScript: [],
+        snippetsCollection: [],
       };
 
       const action: AnyAction = {

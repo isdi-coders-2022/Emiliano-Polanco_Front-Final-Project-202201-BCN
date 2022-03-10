@@ -1,10 +1,10 @@
 import { render } from "@testing-library/react";
-import GenericCard from "./GenericCard";
+import { BrowserRouter } from "react-router-dom";
+import ProfileUserPage from "./ProfileUserPage";
 
 describe("Given a GenericCard component", () => {
   describe("When it's rendered", () => {
     test("Then it should", () => {
-      //  render(<GenericCard />);
       expect(1).toBe(1);
     });
   });
