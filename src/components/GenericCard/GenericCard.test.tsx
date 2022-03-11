@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import userInterface from "../../redux/interfaces/userInterface";
 import GenericCard from "./GenericCard";
 
@@ -44,7 +45,11 @@ describe("Given a GenericCard component", () => {
           },
         ],
       };
-      render(<GenericCard userData={guestUser} />);
+      render(
+        <BrowserRouter>
+          <GenericCard userData={guestUser} />
+        </BrowserRouter>
+      );
 
       const title1 = screen.getByRole("heading", {
         name: /start an express server/i,

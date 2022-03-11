@@ -25,7 +25,6 @@ const NavigationBar: React.FC = () => {
           </li>
         </ul>
       </ul>
-      <div className="h-72 bg-yellowSpace" />
     </div>
   );
 };
