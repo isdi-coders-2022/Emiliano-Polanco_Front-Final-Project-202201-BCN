@@ -43,7 +43,10 @@
       "!src/reportWebVitals.ts",
       "!src/setupTests.ts",
       "!src/react-app-env.d.ts",
-      "!src/App.tsx"
+      "!src/App.tsx",
+      "!src/pages/ProfileUserPage/ProfileUserPage.tsx",
+      "!src/redux/store/store.ts",
+      "!src/redux/reducers/index.ts"
     ]
   },
   "eslintConfig": {

@@ -5,19 +5,15 @@ import userInterface from "../../redux/interfaces/userInterface";
 import { RootState } from "../../redux/reducers";
 import { loadUserSnippetCollectionThunk } from "../../redux/thunks/userThunk";
 import SnippetCollectionCard from "../SnippetCollectionCard/SnippetCollectionCard";
+interface GenericCardProps {
+  userData: userInterface;
+}
 
-const GenericCard: React.FC = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadUserSnippetCollectionThunk);
-  }, [dispatch]);
-
-  const userData: userInterface = useSelector((state: RootState) => state.user);
-
+const GenericCard = ({ userData }: GenericCardProps) => {
   return (
     <div className="bg-white h-96 rounded-2xl shadow-md p-6 flex flex-col">
       <h2 className="text-2xl font-medium">My snippet collections</h2>
-      <ul>
+      <ul className="overflow-y-scroll">
         {userData.snippetsCollection.map(({ title, language }) => (
           <SnippetCollectionCard
             title={title}
