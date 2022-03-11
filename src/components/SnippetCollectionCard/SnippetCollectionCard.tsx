@@ -35,7 +35,7 @@ const SnippetCollectionCard: React.FC<SnippetCollectionProps> = ({
   const bounce = `animate-${editMode ? "bounce" : "none"}`;
   return (
     <li
-      className={`bg-${colors[0]} flex flex-row justify-between h-16 rounded-xl pl-6 pr-6 items-center mt-6 ${bounce}`}
+      className={`bg-${colors[0]}  flex flex-row justify-between h-16 rounded-xl pl-6 pr-6 items-center mt-6 ${bounce}`}
     >
       <h3 className={`text-${colors[1]}`}>{title}</h3>
       <span className={`text-${colors[1]}`}>{acronym}</span>
