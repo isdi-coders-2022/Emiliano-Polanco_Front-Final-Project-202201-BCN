@@ -1,11 +1,6 @@
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 
-interface formValuesInterface {
-  title: string;
-  textCode: string;
-}
-
 const GenericCardEdit = () => {
   const formik = useFormik({
     initialValues: {
