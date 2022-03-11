@@ -1,7 +1,9 @@
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
-
-const GenericCardEdit = () => {
+interface GenericCardInterace {
+  snippetId: string;
+}
+const GenericCardEdit = ({ snippetId }: GenericCardInterace) => {
   const formik = useFormik({
     initialValues: {
       title: "",
