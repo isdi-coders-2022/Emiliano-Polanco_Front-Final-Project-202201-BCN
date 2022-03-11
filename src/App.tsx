@@ -11,10 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/profile" element={<ProfileUserPage />} />
-          <Route
-            path="/edit-snippet"
-            element={<EditSnippetPage snippetId="none" />}
-          />
+          <Route path="/edit-snippet" element={<EditSnippetPage />} />
           <Route path="*" element={<ProfileUserPage />} />
         </Routes>
       </Suspense>
