@@ -1,10 +1,8 @@
-import { useEffect } from "react";
-import { MdAdd, MdEdit } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
 import userInterface from "../../redux/interfaces/userInterface";
-import { RootState } from "../../redux/reducers";
-import { loadUserSnippetCollectionThunk } from "../../redux/thunks/userThunk";
+
 import SnippetCollectionCard from "../SnippetCollectionCard/SnippetCollectionCard";
+import { MdAdd, MdEdit } from "react-icons/md";
+
 interface GenericCardProps {
   userData: userInterface;
 }
