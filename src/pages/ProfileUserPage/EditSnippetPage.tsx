@@ -1,16 +1,12 @@
 import GenericCardEdit from "../../components/GenericCard/GenericCardEdit";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 
-interface EditSnippetPagePropsInterface {
-  snippetId: string;
-}
-
-const EditSnippetPage = ({ snippetId }: EditSnippetPagePropsInterface) => {
+const EditSnippetPage = () => {
   return (
     <>
       <NavigationBar />
       <div className=" h-screen flex justify-center items-center bg-orangeSpace">
-        <GenericCardEdit snippetId={snippetId} />
+        <GenericCardEdit />
       </div>
     </>
   );
