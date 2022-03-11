@@ -19,7 +19,7 @@ const getCardDesignValues = (
       colorsAndAcronym = { colors: ["blueSpace", "white"], acronym: "TS" };
       break;
     default:
-      colorsAndAcronym = { colors: ["black", "white"], acronym: "lol" };
+      colorsAndAcronym = { colors: ["black", "white"], acronym: "unknow" };
       break;
   }
   return colorsAndAcronym;

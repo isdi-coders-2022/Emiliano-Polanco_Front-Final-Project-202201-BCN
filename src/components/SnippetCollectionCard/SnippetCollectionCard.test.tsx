@@ -1,10 +1,9 @@
-import { render } from "@testing-library/react";
-import userInterface from "../../redux/interfaces/userInterface";
+import { render, screen } from "@testing-library/react";
 import SnippetCollectionCard from "./SnippetCollectionCard";
 
 describe("Given a SnippetCollectionCard component", () => {
   describe("When it's rendered with a JavaScript language", () => {
-    test("Then it should", () => {
+    test("Then it should render the JS acronym", () => {
       render(
         <SnippetCollectionCard
           language="JavaScript"
@@ -12,11 +11,15 @@ describe("Given a SnippetCollectionCard component", () => {
           key={"magician"}
         />
       );
+
+      const text = screen.getByText("JS");
+
+      expect(text).toBeInTheDocument();
     });
   });
 
   describe("When it's rendered with a typeScripts language", () => {
-    test("Then it should", () => {
+    test("Then it should render an acronym text TS", () => {
       render(
         <SnippetCollectionCard
           language="TypeScript"
@@ -24,11 +27,15 @@ describe("Given a SnippetCollectionCard component", () => {
           key={"magfdn"}
         />
       );
+
+      const text = screen.getByText("TS");
+
+      expect(text).toBeInTheDocument();
     });
   });
 
   describe("When it's rendered with an unknow language", () => {
-    test("Then it should", () => {
+    test("Then it should render the unknow text", () => {
       render(
         <SnippetCollectionCard
           language="phytonUbunto"
@@ -36,6 +43,10 @@ describe("Given a SnippetCollectionCard component", () => {
           key={"magfdn"}
         />
       );
+
+      const text = screen.getByText("unknow");
+
+      expect(text).toBeInTheDocument();
     });
   });
 });

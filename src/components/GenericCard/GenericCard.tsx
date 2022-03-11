@@ -2,22 +2,20 @@ import userInterface from "../../redux/interfaces/userInterface";
 
 import SnippetCollectionCard from "../SnippetCollectionCard/SnippetCollectionCard";
 import { MdAdd, MdEdit } from "react-icons/md";
+import snippetInterface from "../../redux/interfaces/snippetInterface";
 
 interface GenericCardProps {
   userData: userInterface;
 }
 
 const GenericCard = ({ userData }: GenericCardProps) => {
+  const snippets = userData.snippetsCollection as snippetInterface[];
   return (
     <div className="bg-white h-96 rounded-2xl shadow-md p-6 flex flex-col">
       <h2 className="text-2xl font-medium">My snippet collections</h2>
       <ul className="overflow-y-scroll">
-        {userData.snippetsCollection.map(({ title, language }) => (
-          <SnippetCollectionCard
-            title={title}
-            language={language}
-            key={title}
-          />
+        {snippets.map(({ title, language, _id }) => (
+          <SnippetCollectionCard title={title} language={language} key={_id} />
         ))}
       </ul>
       <ul className="flex flex-row h-16 items-end justify-between justify-self-end">
