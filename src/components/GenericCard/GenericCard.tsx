@@ -3,6 +3,7 @@ import userInterface from "../../redux/interfaces/userInterface";
 import SnippetCollectionCard from "../SnippetCollectionCard/SnippetCollectionCard";
 import { MdAdd, MdEdit } from "react-icons/md";
 import snippetInterface from "../../redux/interfaces/snippetInterface";
+import { Link } from "react-router-dom";
 
 interface GenericCardProps {
   userData: userInterface;
@@ -21,7 +22,10 @@ const GenericCard = ({ userData }: GenericCardProps) => {
       <ul className="flex flex-row h-16 items-end justify-between justify-self-end">
         <li className="ml-6">1 of 14</li>
         <ul className="flex flex-row  w-18  items-center justify-between text-3xl text-blueSpace">
-          <MdEdit className="mr-6" />
+          <Link to="/edit-snippet">
+            <MdEdit className="mr-6" />
+          </Link>
+
           <MdAdd className="mr-6 text-4xl" />
         </ul>
       </ul>
