@@ -1,6 +1,7 @@
 interface SnippetCollectionProps {
   title: string;
   language: string;
+  editMode: boolean;
 }
 
 interface DesignValuesInterface {
@@ -27,12 +28,14 @@ const getCardDesignValues = (
 const SnippetCollectionCard: React.FC<SnippetCollectionProps> = ({
   title,
   language,
+  editMode,
 }: SnippetCollectionProps): JSX.Element => {
   const { colors, acronym }: DesignValuesInterface =
     getCardDesignValues(language);
+  const bounce = `animate-${editMode ? "bounce" : "none"}`;
   return (
     <li
-      className={`bg-${colors[0]} flex flex-row justify-between h-16 rounded-xl pl-6 pr-6 items-center mt-6`}
+      className={`bg-${colors[0]} flex flex-row justify-between h-16 rounded-xl pl-6 pr-6 items-center mt-6 ${bounce}`}
     >
       <h3 className={`text-${colors[1]}`}>{title}</h3>
       <span className={`text-${colors[1]}`}>{acronym}</span>
