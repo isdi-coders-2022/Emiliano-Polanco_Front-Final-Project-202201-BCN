@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GenericCard from "../../components/GenericCard/GenericCard";
-import GenericCardEdit from "../../components/GenericCard/GenericCardEdit";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import userInterface from "../../redux/interfaces/userInterface";
 import { RootState } from "../../redux/reducers";
