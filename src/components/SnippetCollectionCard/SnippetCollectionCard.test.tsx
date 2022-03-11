@@ -9,6 +9,7 @@ describe("Given a SnippetCollectionCard component", () => {
           language="JavaScript"
           title="the superSnippet"
           key={"magician"}
+          editMode={false}
         />
       );
 
@@ -25,6 +26,7 @@ describe("Given a SnippetCollectionCard component", () => {
           language="TypeScript"
           title="the superfdsaSnippet"
           key={"magfdn"}
+          editMode={false}
         />
       );
 
@@ -41,6 +43,7 @@ describe("Given a SnippetCollectionCard component", () => {
           language="phytonUbunto"
           title="the superfdsaSnippet"
           key={"magfdn"}
+          editMode={false}
         />
       );
 
