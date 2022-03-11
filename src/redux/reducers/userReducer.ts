@@ -24,7 +24,7 @@ const userReducer = (
   currentUser: userInterface = guestUser,
   action: AnyAction = { type: "none" }
 ): userInterface => {
-  let newUserState: userInterface = currentUser;
+  let newUserState;
   switch (action.type) {
     case actionTypesUser.loadUsersnippets:
       const jsSnippets: snippetInterface[] =
@@ -42,6 +42,11 @@ const userReducer = (
         snippetsJavaScript: jsSnippets,
         snippetsTypeScript: tsSnippets,
         snippetsCollection: action.userSnippetCollectionPayload,
+      };
+      break;
+    case actionTypesUser.updateUserState:
+      newUserState = {
+        ...action.userStatePayload,
       };
       break;
     default:

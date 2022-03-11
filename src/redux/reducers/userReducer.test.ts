@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { loadUserSnippetAction } from "../actions/actionCreators/actionCreatorUser";
+import { updateUserStateInterface } from "../actions/actionCreators/actionCreatorUser";
 import actionTypesUser from "../actions/actionTypes/actionTypesUser";
 import snippetInterface from "../interfaces/snippetInterface";
 import userInterface from "../interfaces/userInterface";
@@ -105,7 +105,7 @@ describe("Given a userReducer", () => {
     });
   });
 
-  describe("When it receives no action", () => {
+  describe("When it receives an action with no matching case", () => {
     test("Then it should return the currentUserState", () => {
       const expectedUserState: userInterface = {
         name: "Giorno",
@@ -130,6 +130,65 @@ describe("Given a userReducer", () => {
       };
 
       const receivedUserState = userReducer(currentUserState, action);
+
+      expect(receivedUserState).toEqual(expectedUserState);
+    });
+  });
+
+  describe("When it receives an updateUserStateAction", () => {
+    test("Then it should return the new userState", () => {
+      const expectedUserState: userInterface = {
+        name: "I am the new state of the user",
+        lastname: "stadios stadius",
+        username: "Giovanna",
+        email: "normalmail@gmail.com",
+        password: "",
+        pet: "",
+        membership: "",
+        scoreHistoryWpm: [],
+        snippetsJavaScript: [],
+        snippetsPhyton: [],
+        snippetsCsharp: [],
+        scoreHistoryAccuracy: [],
+        scoreHistoryPerCharacter: [], //ojuuu ehhh que eesto esta mal y hay que revisarlo
+        snippetsTypeScript: [],
+        snippetsCollection: [],
+      };
+
+      const userStatePayload = { ...expectedUserState };
+
+      const action: updateUserStateInterface = {
+        type: actionTypesUser.updateUserState,
+        userStatePayload,
+      };
+
+      const receivedState = userReducer(currentUserState, action);
+
+      expect(receivedState).toEqual(expectedUserState);
+    });
+  });
+
+  describe("When it receives no action", () => {
+    test("Then it should return the currentUserState", () => {
+      const expectedUserState: userInterface = {
+        name: "New exited User",
+        lastname: "Happy",
+        username: "",
+        email: "",
+        password: "",
+        pet: "",
+        membership: "",
+        scoreHistoryWpm: [],
+        snippetsJavaScript: [],
+        snippetsPhyton: [],
+        snippetsCsharp: [],
+        scoreHistoryAccuracy: [],
+        scoreHistoryPerCharacter: [], //ojuuu ehhh que eesto esta mal y hay que revisarlo
+        snippetsTypeScript: [],
+        snippetsCollection: [],
+      };
+
+      const receivedUserState = userReducer();
 
       expect(receivedUserState).toEqual(expectedUserState);
     });

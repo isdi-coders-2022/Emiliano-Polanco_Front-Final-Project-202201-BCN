@@ -15,7 +15,7 @@ interface userInterface {
   scoreHistoryAccuracy: number[];
   scoreHistoryPerCharacter: number[]; //ojuuu ehhh que eesto esta mal y hay que revisarlo
   snippetsTypeScript: snippetInterface[] | string[];
-  snippetsCollection: snippetInterface[];
+  snippetsCollection?: snippetInterface[];
 }
 
 export default userInterface;
