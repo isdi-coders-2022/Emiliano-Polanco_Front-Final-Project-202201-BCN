@@ -33,6 +33,7 @@ const SnippetCollectionCard: React.FC<SnippetCollectionProps> = ({
   const { colors, acronym }: DesignValuesInterface =
     getCardDesignValues(language);
   const bounce = `animate-${editMode ? "bounce" : "none"}`;
+
   return (
     <li
       className={`bg-${colors[0]} flex flex-row justify-between h-16 rounded-xl pl-6 pr-6 items-center mt-6 ${bounce}`}

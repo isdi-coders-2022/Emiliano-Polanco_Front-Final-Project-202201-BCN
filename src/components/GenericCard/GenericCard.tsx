@@ -12,19 +12,20 @@ interface GenericCardProps {
 
 const GenericCard = ({ userData }: GenericCardProps) => {
   const snippets = userData.snippetsCollection as snippetInterface[];
-  const [editState, setEditState] = useState(true);
-
+  const [editState, setEditState] = useState(false);
+  const path = editState ? "edit-snippet" : "profile";
   return (
     <div className="bg-white h-screen rounded-2xl shadow-md p-6 flex flex-col">
       <h2 className="text-2xl font-medium">My snippet collections</h2>
       <ul className="overflow-y-scroll">
         {snippets.map(({ title, language, _id }) => (
-          <SnippetCollectionCard
-            title={title}
-            language={language}
-            key={_id}
-            editMode={editState}
-          />
+          <Link to={`${path}?${_id}`} key={_id}>
+            <SnippetCollectionCard
+              title={title}
+              language={language}
+              editMode={editState}
+            />
+          </Link>
         ))}
       </ul>
       <ul className="flex flex-row h-16 items-end justify-between">
