@@ -42,7 +42,7 @@ export const deleteSnippetFromUserCollectionThunk =
     }
   };
 
-export const createSnippetGlobalAndToUserCollection =
+export const createSnippetGlobalAndToUserCollectionThunk =
   (snippet: snippetInterface) => async (dispatch: Dispatch<Action>) => {
     let response;
     try {

@@ -7,7 +7,7 @@ import actionTypesUser from "../actions/actionTypes/actionTypesUser";
 import snippetInterface from "../interfaces/snippetInterface";
 import userInterface from "../interfaces/userInterface";
 import {
-  createSnippetGlobalAndToUserCollection,
+  createSnippetGlobalAndToUserCollectionThunk,
   deleteSnippetFromUserCollectionThunk,
   loadUserSnippetCollectionThunk,
 } from "./userThunk";
@@ -135,7 +135,7 @@ describe("Given a createSnippetGlobalAndToUserCollection", () => {
 
       mockAxios.post.mockResolvedValueOnce(apiResponse);
       const createThunk =
-        createSnippetGlobalAndToUserCollection(createdSnippet);
+        createSnippetGlobalAndToUserCollectionThunk(createdSnippet);
 
       await createThunk(mockDispatch);
 

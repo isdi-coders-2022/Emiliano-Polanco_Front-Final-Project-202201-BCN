@@ -1,19 +1,24 @@
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { createSnippetGlobalAndToUserCollectionThunk } from "../../redux/thunks/userThunk";
 
 const GenericCardCreate = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       title: "",
       textCode: "",
       language: "",
     },
-    onSubmit: ({ title, textCode, language }) => {
-      console.log([title, textCode, language]);
+    onSubmit: (snippet) => {
+      dispatch(createSnippetGlobalAndToUserCollectionThunk(snippet));
+      navigate("/china");
     },
   });
   return (
-    <div className="bg-white h-96 rounded-2xl shadow-md p-6 flex flex-col">
+    <div className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-6 flex flex-col">
       <h2 className="text-2xl font-medium">Create a snippet</h2>
       <form className="h-full pt-8" onSubmit={formik.handleSubmit}>
         <div className="flex flex-row justify-between h-1/6 items-center text-xl">
@@ -36,8 +41,9 @@ const GenericCardCreate = () => {
             name="language"
             id="language-select"
             onChange={formik.handleChange}
+            defaultValue={"DEFAULT"}
           >
-            <option value="" disabled hidden>
+            <option value="DEFAULT" disabled hidden>
               Language
             </option>
             <option className="focus:outline-none" value="JavaScript">
