@@ -1,10 +1,6 @@
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       username: "",
