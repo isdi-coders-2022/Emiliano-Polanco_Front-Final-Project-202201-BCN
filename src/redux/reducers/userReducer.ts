@@ -45,9 +45,7 @@ const userReducer = (
       };
       break;
     case actionTypesUser.updateUserState:
-      newUserState = {
-        ...action.userStatePayload,
-      };
+      newUserState = { ...currentUser, ...action.userStatePayload };
       break;
     default:
       newUserState = { ...currentUser };

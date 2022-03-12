@@ -17,6 +17,7 @@ const GenericCard = ({ userData }: GenericCardProps) => {
   const cursorState = editState
     ? "hover:cursor-pointer"
     : "hover:cursor-default";
+
   return (
     <div className="bg-white h-screen rounded-2xl shadow-md p-6 flex flex-col">
       <h2 className="text-2xl font-medium">My snippet collections</h2>

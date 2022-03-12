@@ -14,7 +14,9 @@ const GenericCardCreate = () => {
     },
     onSubmit: (snippet) => {
       dispatch(createSnippetGlobalAndToUserCollectionThunk(snippet));
-      navigate("/china");
+      setTimeout(() => {
+        navigate("/china");
+      }, 600);
     },
   });
   return (
