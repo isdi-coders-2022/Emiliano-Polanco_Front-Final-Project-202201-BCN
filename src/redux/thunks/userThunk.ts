@@ -9,6 +9,10 @@ export interface deleteObjectInterface {
   id: string;
   language: string;
 }
+export interface editObjectInterface {
+  snippetId: string;
+  updatedProperty: snippetInterface;
+}
 const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
 
 export const loadUserSnippetCollectionThunk = async (
@@ -62,5 +66,19 @@ export const createSnippetGlobalAndToUserCollectionThunk =
       dispatch(updateStateUserAction(response.data));
     } catch (error) {
       // more errorss to dispatch
+    }
+  };
+
+export const editSnippetGloballyThunk =
+  (editObject: editObjectInterface) => async () => {
+    try {
+      const baseEndpoint = editObject.updatedProperty.language.toLowerCase();
+      await axios.patch(`${apiUrl}${baseEndpoint}/edit`, editObject, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+    } catch (error) {
+      // more and more errors
     }
   };
