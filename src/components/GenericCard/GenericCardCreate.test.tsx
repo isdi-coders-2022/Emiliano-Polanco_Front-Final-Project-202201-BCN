@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
 import GenericCardCreate from "./GenericCardCreate";
-import GenericCardEdit from "./GenericCardEdit";
 
 describe("Given a GenericCardCreate component", () => {
   describe("When it's rendered", () => {
