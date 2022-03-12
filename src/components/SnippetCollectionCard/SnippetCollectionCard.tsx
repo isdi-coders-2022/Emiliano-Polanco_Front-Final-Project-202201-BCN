@@ -14,10 +14,10 @@ const getCardDesignValues = (
   let colorsAndAcronym: DesignValuesInterface;
   switch (programingLanguage) {
     case "JavaScript":
-      colorsAndAcronym = { colors: ["yellowSpace", "black"], acronym: "JS" };
+      colorsAndAcronym = { colors: ["bg-yellowSpace", "black"], acronym: "JS" };
       break;
     case "TypeScript":
-      colorsAndAcronym = { colors: ["blueSpace", "white"], acronym: "TS" };
+      colorsAndAcronym = { colors: ["bg-blueSpace", "white"], acronym: "TS" };
       break;
     default:
       colorsAndAcronym = { colors: ["black", "white"], acronym: "unknow" };
@@ -32,10 +32,11 @@ const SnippetCollectionCard: React.FC<SnippetCollectionProps> = ({
 }: SnippetCollectionProps): JSX.Element => {
   const { colors, acronym }: DesignValuesInterface =
     getCardDesignValues(language);
-  const bounce = `animate-${editMode ? "bounce" : "none"}`;
+  const bounce = `${editMode ? "animate-bounce" : "none-bounce"}`;
+
   return (
     <li
-      className={`bg-${colors[0]}  flex flex-row justify-between h-16 rounded-xl pl-6 pr-6 items-center mt-6 ${bounce}`}
+      className={`${colors[0]}  flex flex-row justify-between h-16 rounded-xl pl-6 pr-6 items-center mt-6 ${bounce}`}
     >
       <h3 className={`text-${colors[1]}`}>{title}</h3>
       <span className={`text-${colors[1]}`}>{acronym}</span>
