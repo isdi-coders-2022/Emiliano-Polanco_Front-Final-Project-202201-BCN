@@ -1,12 +1,15 @@
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { updateStateUserAction } from "../../redux/actions/actionCreators/actionCreatorUser";
 import snippetInterface from "../../redux/interfaces/snippetInterface";
 import userInterface from "../../redux/interfaces/userInterface";
 import { RootState } from "../../redux/reducers";
 import {
   deleteObjectInterface,
   deleteSnippetFromUserCollectionThunk,
+  editObjectInterface,
+  editSnippetGloballyThunk,
 } from "../../redux/thunks/userThunk";
 
 const GenericCardEdit = () => {
@@ -25,12 +28,23 @@ const GenericCardEdit = () => {
       title: theSnippet?.title,
       textCode: theSnippet?.textCode,
     },
-    onSubmit: ({ title, textCode }) => {
-      console.log([title, textCode]);
+    onSubmit: (newData) => {
+      const editedSnippet: snippetInterface = {
+        title: newData.title as string,
+        textCode: newData.textCode as string,
+        language: theSnippet?.language as string,
+      };
+      const editObject: editObjectInterface = {
+        snippetId: theSnippet?._id as string,
+        updatedProperty: editedSnippet,
+      };
+      dispatch(editSnippetGloballyThunk(editObject));
+      updateStateUserAction(userData);
+      navigate("/china");
     },
   });
   return (
-    <div className="bg-white h-96 rounded-2xl shadow-md p-6 flex flex-col">
+    <div className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-6 flex flex-col">
       <h2 className="text-2xl font-medium">Edit your snippet</h2>
       <form className="h-full pt-8" onSubmit={formik.handleSubmit}>
         <div className="flex flex-row justify-between h-1/6 items-center text-xl">
