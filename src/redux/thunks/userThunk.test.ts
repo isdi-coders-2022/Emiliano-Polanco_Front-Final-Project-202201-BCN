@@ -8,6 +8,7 @@ import snippetInterface from "../interfaces/snippetInterface";
 import userInterface from "../interfaces/userInterface";
 import {
   createSnippetGlobalAndToUserCollectionThunk,
+  deleteObjectInterface,
   deleteSnippetFromUserCollectionThunk,
   loadUserSnippetCollectionThunk,
 } from "./userThunk";
@@ -86,8 +87,13 @@ describe("Given a deleteSnippetUserCollectionThunk", () => {
       };
       const mockDispatch = jest.fn();
 
+      const deletedObject: deleteObjectInterface = {
+        language: "JavaScript",
+        id: "ldkjflsdk432f",
+      };
+
       mockAxios.delete.mockResolvedValueOnce(apiResponse);
-      const deleteThunk = deleteSnippetFromUserCollectionThunk("4423423");
+      const deleteThunk = deleteSnippetFromUserCollectionThunk(deletedObject);
 
       await deleteThunk(mockDispatch);
 

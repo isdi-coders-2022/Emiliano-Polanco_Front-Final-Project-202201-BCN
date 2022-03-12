@@ -4,7 +4,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import snippetInterface from "../../redux/interfaces/snippetInterface";
 import userInterface from "../../redux/interfaces/userInterface";
 import { RootState } from "../../redux/reducers";
-import { deleteSnippetFromUserCollectionThunk } from "../../redux/thunks/userThunk";
+import {
+  deleteObjectInterface,
+  deleteSnippetFromUserCollectionThunk,
+} from "../../redux/thunks/userThunk";
 
 const GenericCardEdit = () => {
   const dispatch = useDispatch();
@@ -67,7 +70,11 @@ const GenericCardEdit = () => {
               className="bg-red-400 rounded-3xl text-white w-28 h-8 flex justify-center ml-3 mr-3 items-center"
               type="button"
               onClick={() => {
-                dispatch(deleteSnippetFromUserCollectionThunk(snippetId));
+                const deleteObject: deleteObjectInterface = {
+                  language: theSnippet?.language as string,
+                  id: snippetId,
+                };
+                dispatch(deleteSnippetFromUserCollectionThunk(deleteObject));
                 navigate("/profile");
               }}
             >
