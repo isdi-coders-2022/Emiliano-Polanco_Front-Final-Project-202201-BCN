@@ -49,8 +49,9 @@ const GenericCard = ({ userData }: GenericCardProps) => {
               setEditState(!editState);
             }}
           />
-
-          <MdAdd className="mr-6 text-4xl" />
+          <Link to="/create-snippet">
+            <MdAdd className="mr-6 text-4xl" />
+          </Link>
         </ul>
       </ul>
     </div>
