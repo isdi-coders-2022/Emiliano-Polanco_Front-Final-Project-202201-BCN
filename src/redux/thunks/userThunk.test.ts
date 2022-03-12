@@ -10,6 +10,8 @@ import {
   createSnippetGlobalAndToUserCollectionThunk,
   deleteObjectInterface,
   deleteSnippetFromUserCollectionThunk,
+  editObjectInterface,
+  editSnippetGloballyThunk,
   loadUserSnippetCollectionThunk,
 } from "./userThunk";
 
@@ -146,6 +148,23 @@ describe("Given a createSnippetGlobalAndToUserCollection", () => {
       await createThunk(mockDispatch);
 
       expect(mockDispatch).toHaveBeenCalledWith(theRightAction);
+    });
+  });
+});
+
+describe("Given a editSnippetGoballyThunk", () => {
+  describe("When it's called passing in an editObject", () => {
+    test("Then it should call the patch method of axios", async () => {
+      const editObject: editObjectInterface = {
+        snippetId: "lkjlsdfkj342",
+        updatedProperty: {
+          language: "JavaScript",
+          textCode: "mazing code",
+          title: "i am a title lil",
+        },
+      };
+      mockAxios.patch.mockResolvedValueOnce("none");
+      editSnippetGloballyThunk(editObject);
     });
   });
 });
