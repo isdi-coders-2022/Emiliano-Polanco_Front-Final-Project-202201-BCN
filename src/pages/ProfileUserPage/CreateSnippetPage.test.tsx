@@ -2,19 +2,18 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
-import GenericCardEdit from "./GenericCardEdit";
+import CreateSnippetPage from "./CreateSnippetPage";
 
-describe("Given a GenericCardEdit component", () => {
+describe("Given a createSnippetPage component", () => {
   describe("When it's rendered", () => {
-    test("Then it should render a title", () => {
+    test("Then it should have a title", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <GenericCardEdit />
+            <CreateSnippetPage />
           </BrowserRouter>
         </Provider>
       );
-
       const title = screen.getByText("Title");
 
       expect(title).toBeInTheDocument();
