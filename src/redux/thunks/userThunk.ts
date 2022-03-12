@@ -5,6 +5,10 @@ import {
   updateStateUserAction,
 } from "../actions/actionCreators/actionCreatorUser";
 import snippetInterface from "../interfaces/snippetInterface";
+export interface deleteObjectInterface {
+  id: string;
+  language: string;
+}
 const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
 
 export const loadUserSnippetCollectionThunk = async (
@@ -26,14 +30,16 @@ export const loadUserSnippetCollectionThunk = async (
 };
 
 export const deleteSnippetFromUserCollectionThunk =
-  (snippetId: string) => async (dispatch: Dispatch<Action>) => {
+  (deleteObject: deleteObjectInterface) =>
+  async (dispatch: Dispatch<Action>) => {
     let response;
     try {
-      response = await axios.delete(`${apiUrl}javascript/delete`, {
+      const baseEndpoint = deleteObject.language.toLowerCase();
+      response = await axios.delete(`${apiUrl}${baseEndpoint}/delete`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        data: { snippetId },
+        data: { snippetId: deleteObject.id },
       });
 
       dispatch(updateStateUserAction(response.data));
