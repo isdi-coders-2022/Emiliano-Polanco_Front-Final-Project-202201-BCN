@@ -41,3 +41,20 @@ export const deleteSnippetFromUserCollectionThunk =
       // here i should dispatch another error
     }
   };
+
+export const createSnippetGlobalAndToUserCollection =
+  (snippet: snippetInterface) => async (dispatch: Dispatch<Action>) => {
+    let response;
+    try {
+      const baseEndpoint = snippet.language.toLowerCase();
+      response = await axios.post(`${apiUrl}${baseEndpoint}/create`, snippet, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      dispatch(updateStateUserAction(response.data));
+    } catch (error) {
+      // more errorss to dispatch
+    }
+  };
