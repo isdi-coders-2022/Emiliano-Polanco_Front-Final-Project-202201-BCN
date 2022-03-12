@@ -7,6 +7,7 @@ import actionTypesUser from "../actions/actionTypes/actionTypesUser";
 import snippetInterface from "../interfaces/snippetInterface";
 import userInterface from "../interfaces/userInterface";
 import {
+  createSnippetGlobalAndToUserCollection,
   deleteSnippetFromUserCollectionThunk,
   loadUserSnippetCollectionThunk,
 } from "./userThunk";
@@ -89,6 +90,54 @@ describe("Given a deleteSnippetUserCollectionThunk", () => {
       const deleteThunk = deleteSnippetFromUserCollectionThunk("4423423");
 
       await deleteThunk(mockDispatch);
+
+      expect(mockDispatch).toHaveBeenCalledWith(theRightAction);
+    });
+  });
+});
+
+describe("Given a createSnippetGlobalAndToUserCollection", () => {
+  describe("When it's called passing in an object snippet", () => {
+    test("Then it should call the dispatch method passing in an updateUserStateAction", async () => {
+      const createdSnippet: snippetInterface = {
+        language: "JavaScript",
+        textCode: "I am some complex code uwu",
+        title: "super hard code",
+      };
+
+      const userStatePayload: userInterface = {
+        name: "Giorno",
+        lastname: "Giovanna",
+        username: "goldenWind",
+        email: "goldoj@gmail.com",
+        password: "pass123",
+        pet: "basic",
+        membership: "basic",
+        scoreHistoryWpm: [],
+        snippetsJavaScript: [createdSnippet],
+        snippetsPhyton: [],
+        snippetsCsharp: [],
+        scoreHistoryAccuracy: [],
+        scoreHistoryPerCharacter: [],
+        snippetsTypeScript: [],
+        snippetsCollection: [],
+      };
+
+      const theRightAction: updateUserStateInterface = {
+        type: actionTypesUser.updateUserState,
+        userStatePayload,
+      };
+
+      const apiResponse = {
+        data: { ...userStatePayload, snippetsJavaScript: [createdSnippet] },
+      };
+      const mockDispatch = jest.fn();
+
+      mockAxios.post.mockResolvedValueOnce(apiResponse);
+      const createThunk =
+        createSnippetGlobalAndToUserCollection(createdSnippet);
+
+      await createThunk(mockDispatch);
 
       expect(mockDispatch).toHaveBeenCalledWith(theRightAction);
     });
