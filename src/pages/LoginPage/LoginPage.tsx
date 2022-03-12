@@ -1,5 +1,4 @@
 import LoginForm from "../../components/GenericCard/Forms/LoginForm/LoginForm";
-import GenericCardCreate from "../../components/GenericCard/GenericCardCreate";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 
 const LoginPage = () => {
