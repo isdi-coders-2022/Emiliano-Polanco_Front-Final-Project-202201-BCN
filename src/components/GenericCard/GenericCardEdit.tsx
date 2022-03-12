@@ -40,7 +40,9 @@ const GenericCardEdit = () => {
       };
       dispatch(editSnippetGloballyThunk(editObject));
       updateStateUserAction(userData);
-      navigate("/china");
+      setTimeout(() => {
+        navigate("/china");
+      }, 500);
     },
   });
   return (
@@ -89,7 +91,9 @@ const GenericCardEdit = () => {
                   id: snippetId,
                 };
                 dispatch(deleteSnippetFromUserCollectionThunk(deleteObject));
-                navigate("/profile");
+                setTimeout(() => {
+                  navigate("/china");
+                }, 500);
               }}
             >
               Delete

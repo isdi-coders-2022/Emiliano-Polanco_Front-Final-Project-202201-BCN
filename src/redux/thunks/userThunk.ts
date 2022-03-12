@@ -4,7 +4,9 @@ import {
   loadUserSnippetCollectionAction,
   updateStateUserAction,
 } from "../actions/actionCreators/actionCreatorUser";
+import axiosResponseInterface from "../interfaces/axiosResponseInterface";
 import snippetInterface from "../interfaces/snippetInterface";
+import userInterface from "../interfaces/userInterface";
 export interface deleteObjectInterface {
   id: string;
   language: string;
@@ -36,7 +38,7 @@ export const loadUserSnippetCollectionThunk = async (
 export const deleteSnippetFromUserCollectionThunk =
   (deleteObject: deleteObjectInterface) =>
   async (dispatch: Dispatch<Action>) => {
-    let response;
+    let response: axiosResponseInterface;
     try {
       const baseEndpoint = deleteObject.language.toLowerCase();
       response = await axios.delete(`${apiUrl}${baseEndpoint}/delete`, {
@@ -46,7 +48,7 @@ export const deleteSnippetFromUserCollectionThunk =
         data: { snippetId: deleteObject.id },
       });
 
-      dispatch(updateStateUserAction(response.data));
+      dispatch(updateStateUserAction(response.data as userInterface));
     } catch (error) {
       // here i should dispatch another error
     }
@@ -63,6 +65,10 @@ export const createSnippetGlobalAndToUserCollectionThunk =
         },
       });
 
+      loadUserSnippetCollectionAction([
+        ...response.data.snippetsJavaScript,
+        ...response.data.snippetsTypeScript,
+      ]);
       dispatch(updateStateUserAction(response.data));
     } catch (error) {
       // more errorss to dispatch
