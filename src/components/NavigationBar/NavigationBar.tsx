@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const NavigationBar: React.FC = () => {
   return (
-    <div>
-      <ul className="flex flex-row h-16 pl-9 pr-9 justify-between items-center">
+    <>
+      <ul className="flex flex-row  bg-slate-50 h-16 w-screen pl-9 pr-9 justify-between  items-center z-10 fixed">
         <li>
           <Link to="/home">
             <div className="flex flex-row w-9 h-auto justify-between items-center">
@@ -25,7 +25,7 @@ const NavigationBar: React.FC = () => {
           </li>
         </ul>
       </ul>
-    </div>
+    </>
   );
 };
 
