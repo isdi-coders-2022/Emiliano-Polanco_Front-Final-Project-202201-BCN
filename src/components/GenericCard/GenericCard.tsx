@@ -19,9 +19,9 @@ const GenericCard = ({ userData }: GenericCardProps) => {
     : "hover:cursor-default";
 
   return (
-    <div className="bg-white h-screen rounded-2xl shadow-md p-6 flex flex-col">
+    <div className="bg-white  rounded-2xl shadow-md p-6 flex flex-col">
       <h2 className="text-2xl font-medium">My snippet collections</h2>
-      <ul className="overflow-y-scroll">
+      <ul className="">
         {snippets.map(({ title, language, _id }) => (
           <Link
             className={cursorState}

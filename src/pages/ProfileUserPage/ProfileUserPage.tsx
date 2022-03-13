@@ -16,6 +16,11 @@ const ProfileUserPage = () => {
 
   return (
     <>
+      <img
+        className="h-full  w-full fixed  -z-10 "
+        src="backgroundStains.png"
+        alt="background"
+      />
       <NavigationBar />
       <div className="grid grid-cols-2 gap-6 ml-6 mr-6 mt-6">
         <GenericCard userData={userData} />

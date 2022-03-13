@@ -20,7 +20,7 @@ const GenericCardCreate = () => {
     },
   });
   return (
-    <div className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-6 flex flex-col">
+    <div className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-10 flex flex-col">
       <h2 className="text-2xl font-medium">Create a snippet</h2>
       <form className="h-full pt-8" onSubmit={formik.handleSubmit}>
         <div className="flex flex-row justify-between h-1/6 items-center text-xl">
