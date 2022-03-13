@@ -14,6 +14,7 @@ import {
   editSnippetGloballyThunk,
   loadUserSnippetCollectionThunk,
 } from "./userThunk";
+import guestUser from "./utils/guesUser";
 
 afterEach(() => {
   mockAxios.reset();
@@ -46,7 +47,28 @@ describe("Given a loadUseSnippetCollectionThunk", () => {
       const mockDispatch = jest.fn();
       const apiResponse = {
         // OJIUI EHH
-        data: [...userSnippetCollectionPayload],
+        data: {
+          ...guestUser,
+          snippetsJavaScript: [
+            {
+              title: "i am super interesting",
+              textCode: "consoleg trikitraka",
+              language: "JavaScript",
+            },
+            {
+              title: "iam almost done",
+              textCode: "i am not coding i am suffering",
+              language: "TypeScript",
+            },
+          ],
+          snippetsTypeScript: [
+            {
+              title: "Now i am beter",
+              textCode: "wabalabadubdub",
+              language: "TypeScript",
+            },
+          ],
+        },
       };
 
       mockAxios.get.mockResolvedValueOnce(apiResponse);
