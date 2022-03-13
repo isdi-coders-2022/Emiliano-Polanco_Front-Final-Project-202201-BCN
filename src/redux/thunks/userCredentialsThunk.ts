@@ -13,7 +13,7 @@ export const loginUserThunk =
   ({ username, password }: credentialsUserInterface) =>
   async (dispatch: Dispatch<Action>) => {
     try {
-      const response = await axios.post(apiUrl, {
+      const response = await axios.post(`${apiUrl}users/login`, {
         username,
         password,
       });
