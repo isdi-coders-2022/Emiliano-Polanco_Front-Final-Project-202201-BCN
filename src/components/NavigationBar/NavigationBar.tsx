@@ -1,6 +1,11 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import userInterface from "../../redux/interfaces/userInterface";
+import { RootState } from "../../redux/reducers";
 
 const NavigationBar: React.FC = () => {
+  const userData: userInterface = useSelector((state: RootState) => state.user);
+  const activeUser: boolean = userData.name !== "New exited User";
   return (
     <>
       <ul className="flex flex-row  bg-slate-50 h-16 w-screen pl-9 pr-9 justify-between  items-center z-10 fixed">
@@ -12,17 +17,46 @@ const NavigationBar: React.FC = () => {
             </div>
           </Link>
         </li>
+
         <ul className="flex flex-row w-60 justify-between items-center">
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
-            <Link to="/login">
-              <div className="bg-blueSpace rounded-3xl w-28 h-8 flex justify-center ml-3 mr-3 items-center">
-                <span className="text-white">Login</span>
+          {activeUser ? (
+            <li className="p-4">
+              <div className="group relative">
+                <button className="text-blueSpace px-6 first-letter:uppercase">
+                  {userData.name}
+                </button>
+                <nav
+                  tabIndex={0}
+                  className=" invisible bg-orange-100 rounded  absolute left-0 top-full transition-all opacity-0 group-hover:visible group-hover:opacity-100 group-hover:translate-y-1"
+                >
+                  <ul className="py-1">
+                    <li>
+                      <Link
+                        to="/"
+                        onClick={() => {
+                          localStorage.removeItem("token");
+                        }}
+                        className="block px-4 py-2 hover:bg-orange-200"
+                      >
+                        Log out
+                      </Link>
+                    </li>
+                  </ul>
+                </nav>
               </div>
-            </Link>
-          </li>
+            </li>
+          ) : (
+            <li>
+              <Link to="/login">
+                <div className="bg-blueSpace rounded-3xl w-28 h-8 flex justify-center ml-3 mr-3 items-center">
+                  <span className="text-white">Login</span>
+                </div>
+              </Link>
+            </li>
+          )}
         </ul>
       </ul>
       <div className="h-16"></div>
