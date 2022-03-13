@@ -30,7 +30,7 @@ export const registerUserThunk =
   async (dispatch: Dispatch<Action>) => {
     let response;
     try {
-      response = await axios.post(`${apiUrl}register`, registerData);
+      response = await axios.post(`${apiUrl}users/register`, registerData);
       const tokenString: string = response.data.token;
       const { name }: tokenPayloadInterface = await jwtDecode(tokenString);
       const updatedUser = { ...guestUser, name };
