@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -78,4 +78,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

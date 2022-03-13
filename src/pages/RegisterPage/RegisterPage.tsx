@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import RegisterForm from "../../components/Forms/RegisterForm/RegisterForm";
 
 const RegisterPage = () => {
   return (
@@ -20,7 +21,7 @@ const RegisterPage = () => {
       </ul>
       <div className="h-16"></div>
       <div className={`flex justify-center  p-12`}>
-        <p>register Page</p>
+        <RegisterForm />
       </div>
     </>
   );
