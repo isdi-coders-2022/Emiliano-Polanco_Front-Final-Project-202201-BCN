@@ -2,15 +2,18 @@ import { useFormik } from "formik";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUserThunk } from "../../../redux/thunks/userCredentialsThunk";
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
     onSubmit: (credentials) => {
-      console.log("Hellow there");
+      dispatch(loginUserThunk(credentials));
     },
   });
   return (
@@ -25,11 +28,11 @@ const LoginForm = () => {
         <div className="flex flex-col items-center justify-center">
           <div className="h-10 border border-black align-middle rounded-md w-full flex flex-row justify-center items-center">
             <FcGoogle className="text-xl mr-3" />
-            <a href="www.google.com">Log ing with Google</a>
+            <a href="www.google.com">Log in with Google</a>
           </div>
           <div className="h-10 border border-black align-middle mt-4 rounded-md w-full flex flex-row justify-center items-center">
             <AiFillGithub className="text-xl mr-3" />
-            <a href="www.google.com">Log ing with Github</a>
+            <a href="www.google.com">Log in with Github</a>
           </div>
         </div>
         <div className="w-full flex flex-row justify-between items-center mt-10 mb-8 ">
