@@ -37,7 +37,7 @@ const LoginForm = () => {
           <div className="w-5/12 h-px bg-gray-400 inline-block"></div>
         </div>
       </div>
-      <form className="h-full" onSubmit={formik.handleSubmit}>
+      <form className="h-fit" onSubmit={formik.handleSubmit}>
         <label className="block" htmlFor="username">
           Username
         </label>

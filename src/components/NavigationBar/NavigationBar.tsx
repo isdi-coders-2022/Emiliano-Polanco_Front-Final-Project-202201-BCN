@@ -25,6 +25,7 @@ const NavigationBar: React.FC = () => {
           </li>
         </ul>
       </ul>
+      <div className="h-16"></div>
     </>
   );
 };
