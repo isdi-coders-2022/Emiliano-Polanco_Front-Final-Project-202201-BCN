@@ -22,14 +22,19 @@ export const loadUserSnippetCollectionThunk = async (
 ) => {
   let response;
   try {
-    response = await axios.get(`${apiUrl}user/snippets`, {
+    response = await axios.get(`${apiUrl}user`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    const userSnippetCollection: snippetInterface[] = response.data;
-
-    dispatch(loadUserSnippetCollectionAction(userSnippetCollection));
+    const userData: userInterface = response.data;
+    dispatch(updateStateUserAction(userData));
+    dispatch(
+      loadUserSnippetCollectionAction([
+        ...(userData.snippetsJavaScript as snippetInterface[]),
+        ...(userData.snippetsTypeScript as snippetInterface[]),
+      ])
+    );
   } catch (error) {
     // here i shoould dispatch an error
   }
