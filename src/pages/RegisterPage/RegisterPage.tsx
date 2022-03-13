@@ -1,7 +1,22 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import RegisterForm from "../../components/Forms/RegisterForm/RegisterForm";
+import userInterface from "../../redux/interfaces/userInterface";
+import { RootState } from "../../redux/reducers";
 
 const RegisterPage = () => {
+  let navigate = useNavigate();
+
+  const userState: userInterface = useSelector(
+    (state: RootState) => state.user
+  );
+  useEffect(() => {
+    if (userState.name !== "New exited User") {
+      navigate("/home");
+    }
+  }, [userState.name, navigate]);
+
   return (
     <>
       <img

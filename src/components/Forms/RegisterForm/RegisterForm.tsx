@@ -2,15 +2,25 @@ import { useFormik } from "formik";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { userRegisterDataInterface } from "../../../redux/thunks/interfaces/userRegisterDataInterface";
+import { useDispatch } from "react-redux";
+import { registerUserThunk } from "../../../redux/thunks/userCredentialsThunk";
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
+      name: "",
       username: "",
       password: "",
+      email: "",
     },
-    onSubmit: (credentials) => {
-      console.log("Hellow there");
+    onSubmit: (registerData) => {
+      const userRegisterData: userRegisterDataInterface = {
+        ...registerData,
+        lastname: "none",
+      };
+      dispatch(registerUserThunk(userRegisterData));
     },
   });
   return (
