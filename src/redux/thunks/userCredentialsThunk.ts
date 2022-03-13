@@ -17,7 +17,7 @@ export const loginUserThunk =
         username,
         password,
       });
-      const tokenString = response.data.token;
+      const tokenString: string = response.data.token;
       const { name }: tokenPayloadInterface = await jwtDecode(tokenString);
       const updatedUser = { ...guestUser, name };
       localStorage.setItem("token", tokenString);
