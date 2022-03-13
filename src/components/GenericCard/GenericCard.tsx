@@ -4,28 +4,38 @@ import SnippetCollectionCard from "../SnippetCollectionCard/SnippetCollectionCar
 import { MdAdd, MdEdit } from "react-icons/md";
 import snippetInterface from "../../redux/interfaces/snippetInterface";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 interface GenericCardProps {
   userData: userInterface;
 }
 
 const GenericCard = ({ userData }: GenericCardProps) => {
   const [filterState, setFilterState] = useState(userData.snippetsCollection);
-  const snippets = filterState as snippetInterface[];
   const [editState, setEditState] = useState(false);
   const path = editState ? "edit-snippet" : "profile";
   const cursorState = editState
     ? "hover:cursor-pointer"
     : "hover:cursor-default";
+  const [indexState, setIndexState] = useState(0);
+  const pages = new Array(Math.ceil((filterState?.length as number) / 5)).fill(
+    ""
+  );
+  useEffect(() => {
+    setFilterState(userData.snippetsCollection);
+  }, [userData]);
 
+  const snippets = (filterState as snippetInterface[]).slice(
+    indexState,
+    indexState + 5
+  );
   return (
-    <div className="bg-white  rounded-xl shadow-md p-10 flex flex-col">
+    <div className="bg-white h-[43rem] my-10 rounded-xl shadow-md p-10 flex flex-col relative">
       <h2 className="text-2xl font-medium">My snippet collections</h2>
       <ul className="flex justify-start py-5">
         <li className="border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500">
           <button
             onClick={() => {
+              setIndexState(0);
               setFilterState(userData.snippetsCollection);
             }}
           >
@@ -35,6 +45,7 @@ const GenericCard = ({ userData }: GenericCardProps) => {
         <li className="border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500">
           <button
             onClick={() => {
+              setIndexState(0);
               setFilterState(userData.snippetsJavaScript as snippetInterface[]);
             }}
           >
@@ -44,6 +55,7 @@ const GenericCard = ({ userData }: GenericCardProps) => {
         <li className="border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500">
           <button
             onClick={() => {
+              setIndexState(0);
               setFilterState(userData.snippetsTypeScript as snippetInterface[]);
             }}
           >
@@ -71,8 +83,20 @@ const GenericCard = ({ userData }: GenericCardProps) => {
           </Link>
         ))}
       </ul>
-      <ul className="flex flex-row h-16 items-end justify-between">
-        <li className="ml-6">1 of 14</li>
+      <ul className="flex flex-row h-16 items-end justify-between   w-[calc(100%-5rem)] absolute bottom-10 ">
+        <ul className="flex ">
+          {pages.map((element, index) => (
+            <li className="mx-4" key={index}>
+              <span
+                onClick={() => {
+                  setIndexState(index * 5);
+                }}
+              >
+                {index + 1}
+              </span>
+            </li>
+          ))}
+        </ul>
         <ul className="flex flex-row  w-18  items-center justify-between text-3xl text-blueSpace">
           <MdEdit
             className="mr-6 hover:cursor-pointer"
