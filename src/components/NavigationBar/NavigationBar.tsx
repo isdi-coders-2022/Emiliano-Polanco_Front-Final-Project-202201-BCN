@@ -1,9 +1,13 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { updateStateUserAction } from "../../redux/actions/actionCreators/actionCreatorUser";
 import userInterface from "../../redux/interfaces/userInterface";
 import { RootState } from "../../redux/reducers";
+import guestUser from "../../redux/thunks/utils/guesUser";
 
 const NavigationBar: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const userData: userInterface = useSelector((state: RootState) => state.user);
   const activeUser: boolean = userData.name !== "New exited User";
   return (
@@ -36,8 +40,11 @@ const NavigationBar: React.FC = () => {
                     <li>
                       <Link
                         to="/"
-                        onClick={() => {
+                        onClick={(event) => {
+                          event.preventDefault();
+                          dispatch(updateStateUserAction(guestUser));
                           localStorage.removeItem("token");
+                          navigate("/login");
                         }}
                         className="block px-4 py-2 hover:bg-orange-200"
                       >
