@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import CreateSnippetPage from "./pages/ProfileUserPage/CreateSnippetPage";
 import EditSnippetPage from "./pages/ProfileUserPage/EditSnippetPage";
 import ProfileUserPage from "./pages/ProfileUserPage/ProfileUserPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/sign-in" element={<RegisterPage />} />
           <Route path="/profile" element={<ProfileUserPage />} />
           <Route path="/edit-snippet" element={<EditSnippetPage />} />
           <Route path="/create-snippet" element={<CreateSnippetPage />} />

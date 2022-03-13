@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const formik = useFormik({
@@ -67,7 +68,10 @@ const LoginForm = () => {
           Login
         </button>
         <p className="mt-2 ">
-          Dont have an account? <span className="text-blueSpace">Sign up</span>
+          Dont have an account?{" "}
+          <Link to="/sign-in" className="text-blueSpace">
+            Sign up
+          </Link>
         </p>
       </form>
     </div>
