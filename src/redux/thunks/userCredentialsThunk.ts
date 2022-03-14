@@ -14,14 +14,16 @@ export const loginUserThunk =
   (credentials: credentialsUserInterface) =>
   async (dispatch: Dispatch<Action>) => {
     try {
+      console.log(process.env.REACT_APP_API_URL);
       const response = await axios.post(`${apiUrl}users/login`, credentials);
+      debugger;
       const tokenString: string = response.data.token;
       const { name }: tokenPayloadInterface = await jwtDecode(tokenString);
       const updatedUser = { ...guestUser, name };
       localStorage.setItem("token", tokenString);
       dispatch(updateStateUserAction(updatedUser));
     } catch (error) {
-      // i dispatch error here
+      // error to
     }
   };
 

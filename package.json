@@ -12,7 +12,6 @@
     "@types/react-dom": "^17.0.13",
     "axios": "^0.26.1",
     "formik": "^2.2.9",
-    "jest-mock-axios": "^4.5.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -47,6 +46,9 @@
       "!src/App.tsx",
       "!src/redux/store/store.ts",
       "!src/redux/reducers/index.ts"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
     ]
   },
   "eslintConfig": {
@@ -70,6 +72,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "husky": "^7.0.0",
+    "msw": "^0.39.1",
     "postcss": "^8.4.8",
     "tailwindcss": "^3.0.23"
   }
