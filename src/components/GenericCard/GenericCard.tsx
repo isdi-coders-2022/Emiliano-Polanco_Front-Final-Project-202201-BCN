@@ -98,12 +98,15 @@ const GenericCard = ({ userData }: GenericCardProps) => {
           ))}
         </ul>
         <ul className="flex flex-row  w-18  items-center justify-between text-3xl text-blueSpace">
-          <MdEdit
-            className="mr-6 hover:cursor-pointer"
-            onClick={() => {
-              setEditState(!editState);
-            }}
-          />
+          <button>
+            <MdEdit
+              className="mr-6 hover:cursor-pointer"
+              onClick={() => {
+                setEditState(!editState);
+              }}
+            />
+          </button>
+
           <Link to="/create-snippet">
             <MdAdd className="mr-6 text-4xl" />
           </Link>

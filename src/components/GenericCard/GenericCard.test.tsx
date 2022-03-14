@@ -155,4 +155,23 @@ describe("Given a GenericCard component", () => {
       expect(snippetJs).toBeInTheDocument();
     });
   });
+
+  describe("When it's rendered and someone clicks the editButton", () => {
+    test("Then the collecion elements should have a property href", () => {
+      render(
+        <BrowserRouter>
+          <GenericCard userData={guestUser} />
+        </BrowserRouter>
+      );
+      const editButton = screen.getByRole("button", { name: "" });
+
+      userEvent.click(editButton);
+
+      const snippetJs = screen.getByRole("link", {
+        name: "start an express server JS",
+      });
+
+      expect(snippetJs).toHaveProperty("href");
+    });
+  });
 });
