@@ -1,11 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { act } from "react-dom/test-utils";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { updateStateUserAction } from "../../redux/actions/actionCreators/actionCreatorUser";
 import store from "../../redux/store/store";
-import guestUser from "../../redux/thunks/utils/guesUser";
 import GenericCardEdit from "./GenericCardEdit";
 
 const mockNavigate = jest.fn();
