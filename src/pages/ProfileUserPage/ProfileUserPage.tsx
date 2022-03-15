@@ -22,7 +22,7 @@ const ProfileUserPage = () => {
         alt="background"
       />
       <NavigationBar />
-      <div className="grid grid-cols-2 gap-6 ml-6 mr-6 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ml-6 mr-6 mt-6">
         <GenericCard userData={userData} />
       </div>
     </>

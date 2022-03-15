@@ -12,7 +12,7 @@ const NavigationBar: React.FC = () => {
   const activeUser: boolean = userData.name !== "New exited User";
   return (
     <>
-      <ul className="flex flex-row  bg-slate-50 h-16 w-screen pl-9 pr-9 justify-between  items-center z-10 fixed">
+      <ul className="flex flex-row bg-neutral-50 h-[4.5rem] w-screen pl-9 pr-9 justify-between  items-center z-10 fixed">
         <li>
           <Link to="/home">
             <div className="flex flex-row w-9 h-auto justify-between items-center">
@@ -23,7 +23,7 @@ const NavigationBar: React.FC = () => {
         </li>
 
         <ul className="flex flex-row w-60 justify-between items-center">
-          <li>
+          <li className=" invisible md:visible">
             <Link to="/about">About</Link>
           </li>
           {activeUser ? (
@@ -66,7 +66,7 @@ const NavigationBar: React.FC = () => {
           )}
         </ul>
       </ul>
-      <div className="h-16"></div>
+      <div className="h-[4.5rem]"></div>
     </>
   );
 };
