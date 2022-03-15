@@ -46,18 +46,18 @@ const LoginForm = () => {
           Username
         </label>
         <input
-          className="border border-black rounded-md block w-full h-9 mt-3"
+          className="border border-black pl-3 rounded-md block w-full h-9 mt-3"
           type="text"
           id="username"
           name="username"
           onChange={formik.handleChange}
         />
-        <div className="flex justify-between mt-4">
+        <div className="flex justify-between mt-4 ">
           <label htmlFor="password">Password</label>
           <span className="text-blueSpace">Forgot password?</span>
         </div>
         <input
-          className="border border-black rounded-md block w-full h-9 mt-3"
+          className="border border-black rounded-md block pl-3 w-full h-9 mt-3"
           type="password"
           id="password"
           name="password"

@@ -53,7 +53,7 @@ const RegisterForm = () => {
           Name
         </label>
         <input
-          className="border border-black rounded-md block w-full h-9 mt-3"
+          className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
           type="text"
           id="name"
           name="name"
@@ -63,7 +63,7 @@ const RegisterForm = () => {
           Email
         </label>
         <input
-          className="border border-black rounded-md block w-full h-9 mt-3"
+          className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
           type="text"
           id="email"
           name="email"
@@ -73,7 +73,7 @@ const RegisterForm = () => {
           Username
         </label>
         <input
-          className="border border-black rounded-md block w-full h-9 mt-3"
+          className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
           type="text"
           id="username"
           name="username"
@@ -84,7 +84,7 @@ const RegisterForm = () => {
         </label>
 
         <input
-          className="border border-black rounded-md block w-full h-9 mt-3"
+          className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
           type="password"
           id="password"
           name="password"

@@ -29,7 +29,7 @@ const GenericCard = ({ userData }: GenericCardProps) => {
     indexState + 5
   );
   return (
-    <div className="bg-white h-[43rem] my-10 rounded-xl shadow-md p-10 flex flex-col relative">
+    <div className="bg-white h-[43rem] my-10 rounded-xl shadow-md md:p-10 p-7 flex flex-col relative">
       <h2 className="text-2xl font-medium">My snippet collections</h2>
       <ul className="flex justify-start py-5">
         <li className="border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500">
