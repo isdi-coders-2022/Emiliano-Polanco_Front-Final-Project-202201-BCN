@@ -56,7 +56,9 @@ describe("Given a NavegationBar component", () => {
         </Provider>
       );
 
-      const logoutButton = screen.getByRole("button", { name: "emiliano" });
+      const userName = screen.getByRole("button", { name: "emiliano" });
+
+      expect(userName).toBeInTheDocument();
     });
   });
 
