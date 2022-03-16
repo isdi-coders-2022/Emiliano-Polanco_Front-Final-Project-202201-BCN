@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 
 const HomePage = () => {
@@ -55,18 +56,24 @@ const HomePage = () => {
             Pick a language and start typing
           </h2>
           <div className=" flex items-center mt-5">
-            <button className=" bg-blueSpace rounded-3xl w-60 h-11 flex justify-center ml-3 mr-3 items-center text-white font-medium text-xl">
+            <Link
+              to="/game"
+              className=" bg-blueSpace rounded-3xl w-60 h-11 flex justify-center ml-3 mr-3 items-center text-white font-medium text-xl"
+            >
               Practice
-            </button>
+            </Link>
             <p className="w-72 text-lg ml-20">
               Go type with our selected collection of snippets or create your
               own
             </p>
           </div>
           <div className=" flex items-center mt-5">
-            <button className=" bg-blueSpace rounded-3xl w-60 h-11 flex justify-center ml-3 mr-3 items-center text-white font-medium text-xl">
+            <Link
+              to="/game"
+              className=" bg-blueSpace rounded-3xl w-60 h-11 flex justify-center ml-3 mr-3 items-center text-white font-medium text-xl"
+            >
               Go online
-            </button>
+            </Link>
             <p className="w-72 text-lg ml-20">
               Challenge people around the world to see whos the fastest coder
             </p>
