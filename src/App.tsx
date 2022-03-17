@@ -16,7 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/game" element={<GamePage />} />
+          <Route path="/game" element={<GamePage />}>
+            <Route path="javascript/:id" element={<GamePage />} />
+            <Route path="typescript/:id" element={<GamePage />} />
+          </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign-in" element={<RegisterPage />} />
           <Route path="/profile" element={<ProfileUserPage />} />

@@ -13,14 +13,13 @@ const NavigationBar: React.FC = () => {
   const dispatch = useDispatch();
   let loggedUser: boolean = false;
   const [userName, setUserName] = useState("none");
-  console.log(loggedUser);
+
   (async () => {
     const token = localStorage.getItem("token");
     if (token) {
       loggedUser = true;
       const userData: payloadInterface = await jwtDecode(token);
-      console.log(loggedUser);
-      console.log("token");
+
       setUserName(userData.name);
     }
   })();
@@ -31,7 +30,7 @@ const NavigationBar: React.FC = () => {
         <li>
           <Link to="/home">
             <div className="flex flex-row w-9 h-auto justify-between items-center">
-              <img src="cositoNaranja.svg" alt="orange thingy pet" />
+              <img src="/cositoNaranja.svg" alt="orange thingy pet" />
               <span className="font-bold ml-2 text-xl">Codespace</span>
             </div>
           </Link>
