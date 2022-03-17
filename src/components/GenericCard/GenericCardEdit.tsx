@@ -11,7 +11,6 @@ import {
   editObjectInterface,
   editSnippetGloballyThunk,
 } from "../../redux/thunks/userThunk";
-import InputGame from "../InputGame/InputGame";
 
 const GenericCardEdit = () => {
   const dispatch = useDispatch();
