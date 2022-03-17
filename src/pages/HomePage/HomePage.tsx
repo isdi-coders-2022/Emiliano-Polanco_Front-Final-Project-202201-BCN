@@ -1,16 +1,33 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
+const apiUrl = process.env.REACT_APP_API_URL;
+
+const getRandomSnippet = async (language: string) => {
+  const response = await axios.get(`${apiUrl}${language}`);
+  return response.data;
+};
 
 const HomePage = () => {
   const [selectedProgramingLanguage, setSelectedProgramingLanguage] =
     useState("JavaScript");
+  const [randomSnippet, setRandomSnippet] = useState({
+    _id: "1",
+    language: "JavaScript",
+  });
 
+  useEffect(() => {
+    (async () => {
+      const initalSnippet = await getRandomSnippet(selectedProgramingLanguage);
+      setRandomSnippet(initalSnippet);
+    })();
+  }, [selectedProgramingLanguage]);
   return (
     <>
       <img
         className="h-full  w-full fixed  -z-10 "
-        src="backgroundStains.png"
+        src="/backgroundStains.png"
         alt="background"
       />
       <NavigationBar />
@@ -57,7 +74,7 @@ const HomePage = () => {
           </h2>
           <div className=" flex items-center mt-5">
             <Link
-              to="/game"
+              to="/game:id"
               className=" bg-blueSpace rounded-3xl w-60 h-11 flex justify-center ml-3 mr-3 items-center text-white font-medium text-xl"
             >
               Practice
@@ -69,7 +86,9 @@ const HomePage = () => {
           </div>
           <div className=" flex items-center mt-5">
             <Link
-              to="/game"
+              to={`/game/${randomSnippet.language.toLowerCase()}/${
+                randomSnippet._id
+              }`}
               className=" bg-blueSpace rounded-3xl w-60 h-11 flex justify-center ml-3 mr-3 items-center text-white font-medium text-xl"
             >
               Go online
