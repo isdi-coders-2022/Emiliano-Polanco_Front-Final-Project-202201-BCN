@@ -3,19 +3,17 @@ import userInterface from "../../redux/interfaces/userInterface";
 import SnippetCollectionCard from "../SnippetCollectionCard/SnippetCollectionCard";
 import { MdAdd, MdEdit } from "react-icons/md";
 import snippetInterface from "../../redux/interfaces/snippetInterface";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 interface GenericCardProps {
   userData: userInterface;
 }
 
 const GenericCard = ({ userData }: GenericCardProps) => {
+  const navigate = useNavigate();
   const [filterState, setFilterState] = useState(userData.snippetsCollection);
   const [editState, setEditState] = useState(false);
   const path = editState ? "edit-snippet" : "profile";
-  const cursorState = editState
-    ? "hover:cursor-pointer"
-    : "hover:cursor-default";
   const [indexState, setIndexState] = useState(0);
   const pages = new Array(Math.ceil((filterState?.length as number) / 5)).fill(
     ""
@@ -66,11 +64,11 @@ const GenericCard = ({ userData }: GenericCardProps) => {
       <ul className="">
         {snippets.map(({ title, language, _id }) => (
           <Link
-            className={cursorState}
             to={`${path}?id=${_id}`}
             onClick={(event) => {
               if (!editState) {
                 event.preventDefault();
+                navigate(`/game/${language.toLowerCase()}/${_id}`);
               }
             }}
             key={_id}
