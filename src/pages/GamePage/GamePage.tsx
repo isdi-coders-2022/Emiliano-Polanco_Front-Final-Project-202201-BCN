@@ -41,7 +41,6 @@ const GamePage = () => {
         </div>
         <div className="col-span-5">
           <InputGame text={snippet.textCode} />
-          <textarea className="w-full">{snippet.textCode}</textarea>
         </div>
       </div>
     </>
