@@ -1,26 +1,25 @@
-import { useFormik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUserThunk } from "../../../redux/thunks/userCredentialsThunk";
-import { AppStateInterface } from "../../../redux/interfaces/AppErrorStateInterface";
 import { setSuccesStateOnAppActionCreator } from "../../../redux/actions/actionCreators/actionCreatorAppState";
 import succesAppStateObject from "../../../redux/utils/succesAppStateObject";
+import { AppStateInterface } from "../../../redux/interfaces/AppErrorStateInterface";
+import * as Yup from "yup";
+
+const CredentialsScheema = Yup.object().shape({
+  username: Yup.string().required("Who are you?"),
+  password: Yup.string().required("Where is your password?"),
+});
 interface LoginFormProps {
   loginState: AppStateInterface;
 }
+
 const LoginForm = ({ loginState }: LoginFormProps) => {
   const dispatch = useDispatch();
-  const formik = useFormik({
-    initialValues: {
-      username: "",
-      password: "",
-    },
-    onSubmit: (credentials) => {
-      dispatch(loginUserThunk(credentials));
-    },
-  });
+
   return (
     <div className="bg-white w-[27rem] rounded-lg shadow-md p-12">
       <div>
@@ -51,48 +50,72 @@ const LoginForm = ({ loginState }: LoginFormProps) => {
           <p className="text-red-600  pl-3">{loginState.message}</p>
         </div>
       )}
-      <form className="h-fit" onSubmit={formik.handleSubmit}>
-        <label className="block" htmlFor="username">
-          Username
-        </label>
-        <input
-          className="border border-black pl-3 rounded-md block w-full h-9 mt-3"
-          type="text"
-          id="username"
-          name="username"
-          onChange={formik.handleChange}
-        />
-        <div className="flex justify-between mt-4 ">
-          <label htmlFor="password">Password</label>
-          <span className="text-blueSpace">Forgot password?</span>
-        </div>
-        <input
-          className="border border-black rounded-md block pl-3 w-full h-9 mt-3"
-          type="password"
-          id="password"
-          name="password"
-          onChange={formik.handleChange}
-        />
-
-        <button
-          className="bg-blueSpace rounded-md text-white w-full h-10 mt-8 flex justify-center items-center"
-          type="submit"
-        >
-          Login
-        </button>
-        <p className="mt-2 ">
-          Dont have an account?{" "}
-          <Link
-            to="/sign-in"
-            onClick={() => {
-              dispatch(setSuccesStateOnAppActionCreator(succesAppStateObject));
-            }}
-            className="text-blueSpace"
-          >
-            Sign up
-          </Link>
-        </p>
-      </form>
+      <Formik
+        validateOnChange={false}
+        validateOnBlur={true}
+        initialValues={{
+          username: "",
+          password: "",
+        }}
+        validationSchema={CredentialsScheema}
+        onSubmit={(credentials) => {
+          dispatch(loginUserThunk(credentials));
+        }}
+      >
+        {({ errors, touched }) => (
+          <Form className="h-fit">
+            <label className="" htmlFor="username">
+              Username
+            </label>
+            {!(errors.username && touched.username) || (
+              <div className="h-11 bg-red-50 rounded flex items-center mb-4">
+                <p className="text-red-600  pl-3">{errors.username}</p>
+              </div>
+            )}
+            <Field
+              className="border border-black pl-3 rounded-md block w-full h-9 mt-3"
+              type="text"
+              id="username"
+              name="username"
+            />
+            <div className="flex justify-between mt-4 ">
+              <label htmlFor="password">Password</label>
+              <span className="text-blueSpace">Forgot password?</span>
+            </div>
+            {!(errors.password && touched.password) || (
+              <div className="h-11 bg-red-50 rounded flex items-center mb-4">
+                <p className="text-red-600  pl-3">{errors.password}</p>
+              </div>
+            )}
+            <Field
+              className="border border-black rounded-md block pl-3 w-full h-9 mt-3"
+              type="password"
+              id="password"
+              name="password"
+            />
+            <button
+              className="bg-blueSpace rounded-md text-white w-full h-10 mt-8 flex justify-center items-center"
+              type="submit"
+            >
+              Login
+            </button>
+            <p className="mt-2 ">
+              Dont have an account?{" "}
+              <Link
+                to="/sign-in"
+                onClick={() => {
+                  dispatch(
+                    setSuccesStateOnAppActionCreator(succesAppStateObject)
+                  );
+                }}
+                className="text-blueSpace"
+              >
+                Sign up
+              </Link>
+            </p>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
