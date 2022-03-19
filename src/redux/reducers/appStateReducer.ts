@@ -1,6 +1,7 @@
 import { updateStateActionInterface } from "../actions/actionCreators/actionCreatorAppState";
 import errorsActionTypes from "../actions/actionTypes/errorsActionTypes";
 import { AppStateInterface } from "../interfaces/AppErrorStateInterface";
+import succesAppStateObject from "../utils/succesAppStateObject";
 
 const appStateReducer = (
   currentAppState: AppStateInterface,
@@ -14,7 +15,7 @@ const appStateReducer = (
   ) {
     newAppState = { ...action.appStatePayload };
   } else {
-    newAppState = { message: "Oh no this is an unknow error", status: "error" };
+    newAppState = succesAppStateObject;
   }
 
   return newAppState;

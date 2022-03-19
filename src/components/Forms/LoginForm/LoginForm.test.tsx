@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../../redux/store/store";
+import succesAppStateObject from "../../../redux/utils/succesAppStateObject";
 import LoginForm from "./LoginForm";
 
 describe("Given a RegisterForm component", () => {
@@ -10,7 +11,7 @@ describe("Given a RegisterForm component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <LoginForm />
+            <LoginForm loginState={succesAppStateObject} />
           </BrowserRouter>
         </Provider>
       );

@@ -70,10 +70,6 @@ export const createSnippetGlobalAndToUserCollectionThunk =
         },
       });
 
-      loadUserSnippetCollectionAction([
-        ...response.data.snippetsJavaScript,
-        ...response.data.snippetsTypeScript,
-      ]);
       dispatch(updateStateUserAction(response.data));
     } catch (error) {
       // more errorss to dispatch
