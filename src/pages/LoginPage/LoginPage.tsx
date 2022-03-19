@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import LoginForm from "../../components/Forms/LoginForm/LoginForm";
+import { AppStateInterface } from "../../redux/interfaces/AppErrorStateInterface";
 import userInterface from "../../redux/interfaces/userInterface";
 import { RootState } from "../../redux/reducers";
 
@@ -10,6 +11,9 @@ const LoginPage = () => {
 
   const userState: userInterface = useSelector(
     (state: RootState) => state.user
+  );
+  const appState: AppStateInterface = useSelector(
+    (state: RootState) => state.app
   );
   useEffect(() => {
     if (userState.name !== "New exited User") {
@@ -40,7 +44,7 @@ const LoginPage = () => {
       <div className="h-[4.5rem]"></div>
 
       <div className={`flex justify-center  p-12`}>
-        <LoginForm />
+        <LoginForm loginState={appState} />
       </div>
     </>
   );

@@ -4,8 +4,11 @@ import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUserThunk } from "../../../redux/thunks/userCredentialsThunk";
-
-const LoginForm = () => {
+import { AppStateInterface } from "../../../redux/interfaces/AppErrorStateInterface";
+interface LoginFormProps {
+  loginState: AppStateInterface;
+}
+const LoginForm = ({ loginState }: LoginFormProps) => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -54,7 +57,11 @@ const LoginForm = () => {
         />
         <div className="flex justify-between mt-4 ">
           <label htmlFor="password">Password</label>
-          <span className="text-blueSpace">Forgot password?</span>
+          {loginState.status == "ok" ? (
+            <span className="text-blueSpace">Forgot password?</span>
+          ) : (
+            <span className="text-red-500">{loginState.message}</span>
+          )}
         </div>
         <input
           className="border border-black rounded-md block pl-3 w-full h-9 mt-3"

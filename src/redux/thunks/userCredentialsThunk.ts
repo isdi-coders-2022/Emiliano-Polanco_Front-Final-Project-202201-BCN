@@ -2,7 +2,12 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { Dispatch } from "react";
 import { Action } from "redux";
+import {
+  setErrorOnAppActionCreator,
+  setSuccesStateOnAppActionCreator,
+} from "../actions/actionCreators/actionCreatorAppState";
 import { updateStateUserAction } from "../actions/actionCreators/actionCreatorUser";
+import succesAppStateObject from "../utils/succesAppStateObject";
 import { credentialsUserInterface } from "./interfaces/credentialsUserInterface";
 import { tokenPayloadInterface } from "./interfaces/tokenPayloadInterface";
 import { userRegisterDataInterface } from "./interfaces/userRegisterDataInterface";
@@ -19,9 +24,16 @@ export const loginUserThunk =
       const { name }: tokenPayloadInterface = await jwtDecode(tokenString);
       const updatedUser = { ...guestUser, name };
       localStorage.setItem("token", tokenString);
+
       dispatch(updateStateUserAction(updatedUser));
+      dispatch(setSuccesStateOnAppActionCreator(succesAppStateObject));
     } catch (error) {
-      // i dispatch error here
+      dispatch(
+        setErrorOnAppActionCreator({
+          message: "Username and/or Password is wrong.",
+          status: "error",
+        })
+      );
     }
   };
 
