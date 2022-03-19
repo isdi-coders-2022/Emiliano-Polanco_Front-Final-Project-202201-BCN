@@ -5,7 +5,7 @@ import {
   updateStateActionInterface,
 } from "./actionCreatorAppState";
 
-import { AppStateInterface } from "../../interfaces/appStateInterface";
+import { AppStateInterface } from "../../interfaces/AppErrorStateInterface";
 
 describe("Given a setErrorOnAppStateActionCreator", () => {
   describe("When it intanciated with an app state payload", () => {

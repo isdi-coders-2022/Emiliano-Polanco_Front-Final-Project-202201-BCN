@@ -1,4 +1,4 @@
-import { AppStateInterface } from "../../interfaces/appStateInterface";
+import { AppStateInterface } from "../../interfaces/AppErrorStateInterface";
 import errorsActionTypes from "../actionTypes/errorsActionTypes";
 
 export interface updateStateActionInterface {

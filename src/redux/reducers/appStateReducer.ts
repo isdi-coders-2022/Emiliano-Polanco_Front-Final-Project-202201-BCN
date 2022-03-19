@@ -1,6 +1,6 @@
 import { updateStateActionInterface } from "../actions/actionCreators/actionCreatorAppState";
 import errorsActionTypes from "../actions/actionTypes/errorsActionTypes";
-import { AppStateInterface } from "../interfaces/appStateInterface";
+import { AppStateInterface } from "../interfaces/AppErrorStateInterface";
 
 const appStateReducer = (
   currentAppState: AppStateInterface,
