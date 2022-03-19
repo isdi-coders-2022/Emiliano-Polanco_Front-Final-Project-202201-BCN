@@ -8,9 +8,11 @@ import { RootState } from "../../redux/reducers";
 const RegisterPage = () => {
   let navigate = useNavigate();
 
-  const userState: userInterface = useSelector(
-    (state: RootState) => state.user
-  );
+  const { userState, appState } = useSelector((state: RootState) => ({
+    userState: state.user,
+    appState: state.app,
+  }));
+
   useEffect(() => {
     if (userState.name !== "New exited User") {
       navigate("/home");
@@ -39,7 +41,7 @@ const RegisterPage = () => {
       </div>
       <div className="h-[4.5rem]"></div>
       <div className={`flex justify-center  p-12`}>
-        <RegisterForm />
+        <RegisterForm registerState={appState} />
       </div>
     </>
   );

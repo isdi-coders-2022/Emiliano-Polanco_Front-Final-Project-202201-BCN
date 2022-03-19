@@ -30,7 +30,7 @@ export const loginUserThunk =
     } catch (error) {
       dispatch(
         setErrorOnAppActionCreator({
-          message: "Username and/or Password is wrong.",
+          message: "Username and/or Password is wrong",
           status: "error",
         })
       );
@@ -49,6 +49,12 @@ export const registerUserThunk =
       localStorage.setItem("token", tokenString);
       dispatch(updateStateUserAction(updatedUser));
     } catch (error) {
-      // super errors for everyone
+      dispatch(
+        setErrorOnAppActionCreator({
+          message:
+            "Please fill in all the fields and make sure the data it's correct",
+          status: "error",
+        })
+      );
     }
   };

@@ -5,8 +5,15 @@ import { Link } from "react-router-dom";
 import { userRegisterDataInterface } from "../../../redux/thunks/interfaces/userRegisterDataInterface";
 import { useDispatch } from "react-redux";
 import { registerUserThunk } from "../../../redux/thunks/userCredentialsThunk";
+import { AppStateInterface } from "../../../redux/interfaces/AppErrorStateInterface";
+import { setSuccesStateOnAppActionCreator } from "../../../redux/actions/actionCreators/actionCreatorAppState";
+import succesAppStateObject from "../../../redux/utils/succesAppStateObject";
 
-const RegisterForm = () => {
+interface RegisterFormProps {
+  registerState: AppStateInterface;
+}
+
+const RegisterForm = ({ registerState }: RegisterFormProps) => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -48,6 +55,11 @@ const RegisterForm = () => {
           <div className="w-5/12 h-px bg-gray-400 inline-block"></div>
         </div>
       </div>
+      {registerState.status === "ok" || (
+        <div className="h-14 bg-red-50 rounded flex items-center mb-4">
+          <p className="text-red-600  pl-3">{registerState.message}</p>
+        </div>
+      )}
       <form className="h-fit" onSubmit={formik.handleSubmit}>
         <label className="block mt-4" htmlFor="name">
           Name
@@ -99,7 +111,13 @@ const RegisterForm = () => {
         </button>
         <p className="mt-2 ">
           Already have an account?{" "}
-          <Link to="/login" className="text-blueSpace">
+          <Link
+            to="/login"
+            onClick={() => {
+              dispatch(setSuccesStateOnAppActionCreator(succesAppStateObject));
+            }}
+            className="text-blueSpace"
+          >
             Login
           </Link>
         </p>

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUserThunk } from "../../../redux/thunks/userCredentialsThunk";
 import { AppStateInterface } from "../../../redux/interfaces/AppErrorStateInterface";
+import { setSuccesStateOnAppActionCreator } from "../../../redux/actions/actionCreators/actionCreatorAppState";
+import succesAppStateObject from "../../../redux/utils/succesAppStateObject";
 interface LoginFormProps {
   loginState: AppStateInterface;
 }
@@ -44,6 +46,11 @@ const LoginForm = ({ loginState }: LoginFormProps) => {
           <div className="w-5/12 h-px bg-gray-400 inline-block"></div>
         </div>
       </div>
+      {loginState.status === "ok" || (
+        <div className="h-11 bg-red-50 rounded flex items-center mb-4">
+          <p className="text-red-600  pl-3">{loginState.message}</p>
+        </div>
+      )}
       <form className="h-fit" onSubmit={formik.handleSubmit}>
         <label className="block" htmlFor="username">
           Username
@@ -57,11 +64,7 @@ const LoginForm = ({ loginState }: LoginFormProps) => {
         />
         <div className="flex justify-between mt-4 ">
           <label htmlFor="password">Password</label>
-          {loginState.status == "ok" ? (
-            <span className="text-blueSpace">Forgot password?</span>
-          ) : (
-            <span className="text-red-500">{loginState.message}</span>
-          )}
+          <span className="text-blueSpace">Forgot password?</span>
         </div>
         <input
           className="border border-black rounded-md block pl-3 w-full h-9 mt-3"
@@ -79,7 +82,13 @@ const LoginForm = ({ loginState }: LoginFormProps) => {
         </button>
         <p className="mt-2 ">
           Dont have an account?{" "}
-          <Link to="/sign-in" className="text-blueSpace">
+          <Link
+            to="/sign-in"
+            onClick={() => {
+              dispatch(setSuccesStateOnAppActionCreator(succesAppStateObject));
+            }}
+            className="text-blueSpace"
+          >
             Sign up
           </Link>
         </p>
