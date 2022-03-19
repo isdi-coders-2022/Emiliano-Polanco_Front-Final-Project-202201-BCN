@@ -11,7 +11,10 @@ interface GenericCardProps {
 
 const GenericCard = ({ userData }: GenericCardProps) => {
   const navigate = useNavigate();
-  const [filterState, setFilterState] = useState(userData.snippetsCollection);
+  const [snippetsLanguage, setSnippetsLanguage] = useState("All");
+  const [filterState, setFilterState] = useState(
+    userData.snippetsCollection as snippetInterface[]
+  );
   const [editState, setEditState] = useState(false);
   const path = editState ? "edit-snippet" : "profile";
   const [indexState, setIndexState] = useState(0);
@@ -19,42 +22,58 @@ const GenericCard = ({ userData }: GenericCardProps) => {
     ""
   );
   useEffect(() => {
-    setFilterState(userData.snippetsCollection);
+    setFilterState(userData.snippetsCollection as snippetInterface[]);
   }, [userData]);
 
   const snippets = (filterState as snippetInterface[]).slice(
     indexState,
     indexState + 5
   );
+  console.log(indexState);
   return (
     <div className="bg-white h-[43rem] my-10 rounded-xl shadow-md md:p-10 p-7 flex flex-col relative">
       <h2 className="text-2xl font-medium">My snippet collections</h2>
       <ul className="flex justify-start py-5">
-        <li className="border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500">
+        <li
+          className={`border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500 ${
+            snippetsLanguage === "All" ? "bg-slate-200" : "a"
+          }`}
+        >
           <button
             onClick={() => {
+              setSnippetsLanguage("All");
               setIndexState(0);
-              setFilterState(userData.snippetsCollection);
+              setFilterState(userData.snippetsCollection as snippetInterface[]);
             }}
           >
             All
           </button>
         </li>
-        <li className="border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500">
+        <li
+          className={`border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500 ${
+            snippetsLanguage === "JavaScript" ? "bg-slate-200" : "a"
+          }`}
+        >
           <button
             onClick={() => {
               setIndexState(0);
               setFilterState(userData.snippetsJavaScript as snippetInterface[]);
+              setSnippetsLanguage("JavaScript");
             }}
           >
             JavaScript
           </button>
         </li>
-        <li className="border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500">
+        <li
+          className={`border flex justify-center items-center mr-4 rounded-lg px-3 text-gray-500 ${
+            snippetsLanguage === "TypeScript" ? "bg-slate-200" : "a"
+          }`}
+        >
           <button
             onClick={() => {
               setIndexState(0);
               setFilterState(userData.snippetsTypeScript as snippetInterface[]);
+              setSnippetsLanguage("TypeScript");
             }}
           >
             TypeScript
@@ -84,14 +103,16 @@ const GenericCard = ({ userData }: GenericCardProps) => {
       <ul className="flex flex-row h-16 items-end justify-between   w-[calc(100%-5rem)] absolute bottom-10 ">
         <ul className="flex ">
           {pages.map((element, index) => (
-            <li className="mx-4" key={index}>
-              <span
-                onClick={() => {
-                  setIndexState(index * 5);
-                }}
-              >
-                {index + 1}
-              </span>
+            <li
+              onClick={() => {
+                setIndexState(index * 5);
+              }}
+              className={`mx-4 w-7 h-7 flex justify-center items-center rounded hover:cursor-pointer ${
+                indexState === index * 5 ? "bg-gray-200" : ""
+              }`}
+              key={index}
+            >
+              <span>{index + 1}</span>
             </li>
           ))}
         </ul>
