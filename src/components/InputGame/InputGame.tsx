@@ -14,14 +14,12 @@ const InputGame = ({ text }: InputGameProps) => {
       language="jsx"
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
-        console.log(tokens);
         return (
           <pre
             className={`${className} p-10 rounded-md shadow-md`}
             style={style}
           >
             {tokens.map((line, i) => {
-              console.log(line);
               return (
                 <div {...getLineProps({ line, key: i })}>
                   {line.map((token, key) => (

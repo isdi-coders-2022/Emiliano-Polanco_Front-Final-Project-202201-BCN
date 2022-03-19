@@ -16,7 +16,7 @@ const GamePage = () => {
   }, [dispatch, language, params.id]);
   const gameState = useSelector((state: RootState) => state.game);
   const snippet = gameState.snippet;
-  console.log(snippet.textCode);
+
   return (
     <>
       <img
