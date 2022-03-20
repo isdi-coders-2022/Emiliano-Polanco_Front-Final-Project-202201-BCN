@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { updateStateUserAction } from "../../redux/actions/actionCreators/actionCreatorUser";
 import snippetInterface from "../../redux/interfaces/snippetInterface";
@@ -46,7 +47,13 @@ const GenericCardEdit = () => {
     },
   });
   return (
-    <div className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-10 flex flex-col">
+    <motion.div
+      initial={{ scaleY: 0.7, opacity: 0 }}
+      animate={{ scaleY: 1, opacity: 1 }}
+      exit={{ scaleY: 0.7 }}
+      transition={{ duration: 0.2 }}
+      className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-10 flex flex-col"
+    >
       <h2 className="text-2xl font-medium">Edit your snippet</h2>
       <form className="h-full pt-8" onSubmit={formik.handleSubmit}>
         <div className="flex flex-row justify-between h-1/6 items-center text-xl">
@@ -107,7 +114,7 @@ const GenericCardEdit = () => {
           </div>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

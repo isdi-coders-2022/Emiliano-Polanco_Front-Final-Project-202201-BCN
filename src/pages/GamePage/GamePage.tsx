@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
@@ -19,30 +20,38 @@ const GamePage = () => {
 
   return (
     <>
-      <img
-        className="h-full  w-full fixed  -z-10 "
-        src="/backgroundStains.png"
-        alt="background"
-      />
-      <NavigationBar />
-      <div className={`grid grid-cols-6 h-[calc(100vh-4.5rem)] p-12`}>
-        <div>
-          <div className="bg-yellowSpace rounded-2xl h-44 w-24 -translate-y-16 flex items-end p-3">
-            <span className="text-2xl">Start typing</span>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <img
+          className="h-full  w-full fixed  -z-10 "
+          src="/backgroundStains.png"
+          alt="background"
+        />
+        <NavigationBar />
+        <div className={`grid grid-cols-6 h-[calc(100vh-4.5rem)] p-12`}>
+          <div>
+            <div className="bg-yellowSpace rounded-2xl h-44 w-24 -translate-y-16 flex items-end p-3">
+              <span className="text-2xl">Start typing</span>
+            </div>
+            <div className="w-10 my-10 ">
+              <p className="text-4xl font-semibold text-gray-600 pl-2">
+                48 wpm
+              </p>
+            </div>
+            <div className="w-10 my-10 ">
+              <p className="text-4xl font-semibold text-gray-600 pl-2">
+                98% accur.
+              </p>
+            </div>
           </div>
-          <div className="w-10 my-10 ">
-            <p className="text-4xl font-semibold text-gray-600 pl-2">48 wpm</p>
-          </div>
-          <div className="w-10 my-10 ">
-            <p className="text-4xl font-semibold text-gray-600 pl-2">
-              98% accur.
-            </p>
+          <div className="col-span-5">
+            <InputGame text={snippet.textCode} />
           </div>
         </div>
-        <div className="col-span-5">
-          <InputGame text={snippet.textCode} />
-        </div>
-      </div>
+      </motion.div>
     </>
   );
 };

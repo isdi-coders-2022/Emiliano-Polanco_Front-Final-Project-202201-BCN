@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GenericCard from "../../components/GenericCard/GenericCard";
@@ -23,7 +24,14 @@ const ProfileUserPage = () => {
       />
       <NavigationBar />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ml-6 mr-6 mt-6">
-        <GenericCard userData={userData} />
+        <motion.div
+          initial={{ scaleY: 0.7, opacity: 0 }}
+          animate={{ scaleY: 1, opacity: 1 }}
+          exit={{ scaleY: 0.7 }}
+          transition={{ duration: 0.2 }}
+        >
+          <GenericCard userData={userData} />
+        </motion.div>
       </div>
     </>
   );
