@@ -11,7 +11,6 @@ import ProfileUserPage from "./pages/ProfileUserPage/ProfileUserPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
-  const location = useLocation();
   return (
     <>
       <AnimatePresence exitBeforeEnter={true} initial={false}>
