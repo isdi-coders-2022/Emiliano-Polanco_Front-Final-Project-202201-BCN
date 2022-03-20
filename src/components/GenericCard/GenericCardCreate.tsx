@@ -1,6 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { createSnippetGlobalAndToUserCollectionThunk } from "../../redux/thunks/userThunk";
 import * as Yup from "yup";
 
@@ -15,7 +16,13 @@ const GenericCardCreate = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-10 flex flex-col">
+    <motion.div
+      initial={{ scaleY: 0.7, opacity: 0 }}
+      animate={{ scaleY: 1, opacity: 1 }}
+      exit={{ scaleY: 0.7 }}
+      transition={{ duration: 0.2 }}
+      className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-10 flex flex-col"
+    >
       <h2 className="text-2xl font-medium">Create a snippet</h2>
       <Formik
         validateOnChange={false}
@@ -103,7 +110,7 @@ const GenericCardCreate = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </motion.div>
   );
 };
 
