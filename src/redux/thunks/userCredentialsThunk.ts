@@ -58,3 +58,26 @@ export const registerUserThunk =
       );
     }
   };
+
+export const loginRegisterUserGoogleThunk =
+  (token: string) => async (dispatch: Dispatch<Action>) => {
+    try {
+      const response = await axios.post(`${apiUrl}users/login-google`, {
+        token,
+      });
+      const tokenString: string = response.data.tokenJWT;
+      const { name }: tokenPayloadInterface = await jwtDecode(tokenString);
+      const updatedUser = { ...guestUser, name };
+      localStorage.setItem("token", tokenString);
+
+      dispatch(updateStateUserAction(updatedUser));
+      dispatch(setSuccesStateOnAppActionCreator(succesAppStateObject));
+    } catch (error) {
+      dispatch(
+        setErrorOnAppActionCreator({
+          message: "Username and/or Password is wrong",
+          status: "error",
+        })
+      );
+    }
+  };
