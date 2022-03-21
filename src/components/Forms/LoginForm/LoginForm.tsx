@@ -51,9 +51,7 @@ const LoginForm = ({ loginState }: LoginFormProps) => {
                 const typedResponse = response as GoogleLoginResponse;
                 dispatch(loginRegisterUserGoogleThunk(typedResponse.tokenId));
               }}
-              onFailure={(response) => {
-                console.log(response);
-              }}
+              onFailure={(response) => {}}
               cookiePolicy={"single_host_origin"}
             />
           </div>
