@@ -3,11 +3,15 @@ import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUserThunk } from "../../../redux/thunks/userCredentialsThunk";
+import {
+  loginRegisterUserGoogleThunk,
+  loginUserThunk,
+} from "../../../redux/thunks/userCredentialsThunk";
 import { setSuccesStateOnAppActionCreator } from "../../../redux/actions/actionCreators/actionCreatorAppState";
 import succesAppStateObject from "../../../redux/utils/succesAppStateObject";
 import { AppStateInterface } from "../../../redux/interfaces/AppErrorStateInterface";
 import * as Yup from "yup";
+import GoogleLogin, { GoogleLoginResponse } from "react-google-login";
 
 const CredentialsScheema = Yup.object().shape({
   username: Yup.string().required("Who are you?"),
@@ -32,7 +36,26 @@ const LoginForm = ({ loginState }: LoginFormProps) => {
         <div className="flex flex-col items-center justify-center">
           <div className="h-10 border border-black align-middle rounded-md w-full flex flex-row justify-center items-center">
             <FcGoogle className="text-xl mr-3" />
-            <a href="www.google.com">Log in with Google</a>
+            <GoogleLogin
+              clientId="444624699992-6j9qum8qhkajkclj2tc3nnifs0o88gqh.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <button
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                >
+                  Log in with Google
+                </button>
+              )}
+              buttonText="Login"
+              onSuccess={(response) => {
+                const typedResponse = response as GoogleLoginResponse;
+                dispatch(loginRegisterUserGoogleThunk(typedResponse.tokenId));
+              }}
+              onFailure={(response) => {
+                console.log(response);
+              }}
+              cookiePolicy={"single_host_origin"}
+            />
           </div>
           <div className="h-10 border border-black align-middle mt-4 rounded-md w-full flex flex-row justify-center items-center">
             <AiFillGithub className="text-xl mr-3" />
