@@ -2,6 +2,8 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AboutInfo from "../../components/AboutInfo/AboutInfo";
+import BenefitsInfo from "../../components/BenefitsInfo/BenefitsInfo";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -69,21 +71,10 @@ const HomePage = () => {
                 </button>
               </div>
             </div>
-            <h2 className="text-6xl w-[34rem] my-20">
-              Pick a language and start typing
+            <h2 className="text-6xl w-[34rem] my-20 font-medium">
+              Pick a language and start exploring
             </h2>
-            <div className=" flex items-center mt-5">
-              <Link
-                to="/game:id"
-                className=" bg-blueSpace rounded-3xl w-60 h-11 flex justify-center ml-3 mr-3 items-center text-white font-medium text-xl"
-              >
-                Practice
-              </Link>
-              <p className="w-72 text-lg ml-20">
-                Go type with our selected collection of snippets or create your
-                own
-              </p>
-            </div>
+
             <div className=" flex items-center mt-5">
               <Link
                 to={`/game/${randomSnippet.language.toLowerCase()}/${
@@ -91,14 +82,16 @@ const HomePage = () => {
                 }`}
                 className=" bg-blueSpace rounded-3xl w-60 h-11 flex justify-center ml-3 mr-3 items-center text-white font-medium text-xl"
               >
-                Go online
+                Let's go
               </Link>
-              <p className="w-72 text-lg ml-20">
-                Challenge people around the world to see whos the fastest coder
+              <p className="w-72 text-lg ml-10">
+                See how peole around the globe thinks and writes code
               </p>
             </div>
           </div>
         </div>
+        <AboutInfo></AboutInfo>
+        <BenefitsInfo></BenefitsInfo>
       </motion.div>
     </>
   );
