@@ -2,6 +2,8 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AboutInfo from "../../components/AboutInfo/AboutInfo";
+import BenefitsInfo from "../../components/BenefitsInfo/BenefitsInfo";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -99,6 +101,8 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        <AboutInfo></AboutInfo>
+        <BenefitsInfo></BenefitsInfo>
       </motion.div>
     </>
   );
