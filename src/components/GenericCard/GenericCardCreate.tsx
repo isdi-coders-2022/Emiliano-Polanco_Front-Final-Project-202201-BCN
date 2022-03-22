@@ -58,7 +58,7 @@ const GenericCardCreate = () => {
                   placeholder="Reducer assembly"
                 />
               </div>
-              <div className="bg-red-50 w-52 pl-3 rounded">
+              <div className="bg-red-50 w-52 pl-3 rounded p-2">
                 <p className="text-red-500 text-base">
                   {" "}
                   {!(errors.language && touched.language) || errors.language}
