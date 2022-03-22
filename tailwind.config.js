@@ -12,6 +12,7 @@ module.exports = {
         darkPurpleSpace: "#281366",
         graySpace: "#413D45",
         yellowChill: "#FFF7D4",
+        wavesGray: "#67646A",
       },
     },
   },

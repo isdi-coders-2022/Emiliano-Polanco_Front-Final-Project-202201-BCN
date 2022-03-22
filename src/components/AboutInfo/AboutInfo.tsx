@@ -11,11 +11,9 @@ const AboutInfo = () => {
       <div className="bg-orangeSpace rounded-full h-[2rem] w-[2rem] absolute top-[32rem] left-40"></div>
       <div className="bg-blueSpace rounded-full h-[32rem] w-[32rem] absolute -bottom-[14rem] -right-20"></div>
       <div className="bg-orangeSpace rounded-full h-[13rem] w-[13rem] absolute bottom-[1rem] left-20"></div>
-      <p className="text-7xl font-medium  w-[40rem] z-50 mb-8  ">
-        Coding can be
-      </p>
-      <p className="text-7xl font-medium  w-[40rem] z-50 mb-8">more fun</p>
-      <p className="text-7xl font-medium  w-[40rem] z-50 ">share your work</p>
+      <p className="text-7xl font-medium    mb-8  ">Coding can be</p>
+      <p className="text-7xl font-medium mb-8">more fun when</p>
+      <p className="text-7xl font-medium  ">you share your work</p>
     </div>
   );
 };
