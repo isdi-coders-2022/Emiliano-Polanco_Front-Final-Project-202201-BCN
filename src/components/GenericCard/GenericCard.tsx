@@ -79,25 +79,38 @@ const GenericCard = ({ userData }: GenericCardProps) => {
           </button>
         </li>
       </ul>
-      <ul className="">
-        {snippets.map(({ title, language, _id }) => (
-          <Link
-            to={`${path}?id=${_id}`}
-            onClick={(event) => {
-              if (!editState) {
-                event.preventDefault();
-                navigate(`/game/${language.toLowerCase()}/${_id}`);
-              }
-            }}
-            key={_id}
-          >
-            <SnippetCollectionCard
-              title={title}
-              language={language}
-              editMode={editState}
+      <ul className="h-full">
+        {!snippets.length ? (
+          <div className="flex flex-col justify-center items-center h-full">
+            <p className="text-gray-400 text-xl font-light mb-5">
+              It looks like you don't have snippets for now
+            </p>
+            <img
+              className="h-80 w-auto opacity-60 "
+              src="/dinosaur.png"
+              alt="background"
             />
-          </Link>
-        ))}
+          </div>
+        ) : (
+          snippets.map(({ title, language, _id }) => (
+            <Link
+              to={`${path}?id=${_id}`}
+              onClick={(event) => {
+                if (!editState) {
+                  event.preventDefault();
+                  navigate(`/game/${language.toLowerCase()}/${_id}`);
+                }
+              }}
+              key={_id}
+            >
+              <SnippetCollectionCard
+                title={title}
+                language={language}
+                editMode={editState}
+              />
+            </Link>
+          ))
+        )}
       </ul>
       <ul className="flex flex-row h-16 items-end justify-between   w-[calc(100%-5rem)] absolute bottom-10 ">
         <ul className="flex ">
