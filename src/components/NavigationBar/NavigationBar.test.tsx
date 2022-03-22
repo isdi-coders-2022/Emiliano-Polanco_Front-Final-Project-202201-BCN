@@ -3,11 +3,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import NavigationBar from "./NavigationBar";
 import store from "../../redux/store/store";
-import * as reactRedux from "react-redux";
-import guestUser from "../../redux/thunks/utils/guesUser";
-import userEvent from "@testing-library/user-event";
-
-const useSelectorMock = jest.spyOn(reactRedux, "useSelector");
 
 describe("Given a NavegationBar component", () => {
   describe("When it's rendered", () => {
