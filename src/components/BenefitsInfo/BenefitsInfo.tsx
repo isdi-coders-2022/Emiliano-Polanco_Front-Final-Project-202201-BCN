@@ -1,22 +1,22 @@
 const BenefitsInfo = () => {
   return (
     <>
-      <div className="h-[90vh] bg-white relative flex flex-col items-center justify-center">
-        <div className="bg-purpleSpace rounded-full h-[5rem] w-[5rem] absolute top-96 left-10"></div>
-        <div className="bg-orangeSpace rounded-full h-[2rem] w-[2rem] absolute top-[32rem] right-40"></div>
+      <div className="lg:h-[90vh] bg-white relative flex flex-col items-center justify-center">
+        <div className="bg-purpleSpace rounded-full lg:h-[5rem] lg:w-[5rem] absolute top-96 left-10"></div>
+        <div className="bg-orangeSpace rounded-full lg:h-[2rem] lg:w-[2rem] absolute top-[32rem] right-40"></div>
         <div className="bg-yellowSpace rounded-full h-[1rem] w-[1rem] absolute top-80 right-10"></div>
         <div className="bg-orangeSpace rounded-full h-[2rem] w-[2rem] absolute top-[2rem] left-32"></div>
         <div className="bg-blueSpace rounded-full h-[1rem] w-[1rem] absolute top-45 left-14"></div>
         <div className="bg-yellowSpace rounded-full h-[4rem] w-[4rem] absolute top-[5rem] right-40"></div>
         <div className="bg-purpleSpace rounded-full h-[1rem] w-[1rem] absolute top-4 left-11"></div>
-        <div className="bg-orangeSpace rounded-full h-[2rem] w-[2rem] absolute top-[32rem] left-40"></div>
-        <ul className="flex  bg-white w-9/12">
-          <li className="flex flex-col p-9 w-1/3">
-            <div className="flex">
-              <img src="/phone.png" alt="moreshit" />
+        <div className="bg-yellowSpace rounded-full h-[2rem] w-[2rem] absolute top-[35rem] left-43"></div>
+        <ul className="flex lg:flex-row flex-col bg-white xl:w-9/12 w-10/12 items-center">
+          <li className="flex flex-col p-9 lg:w-1/3">
+            <div className="flex justify-center">
+              <img src="/phone.png" alt="phone" />
               <div className="flex flex-col justify-center items-center pl-3">
-                <span className="text-4xl font-medium">Your code </span>
-                <span className="text-4xl font-medium"> anywhere</span>
+                <span className="text-4xl font-medium z-10">Your code </span>
+                <span className="text-4xl font-medium z-10"> anywhere</span>
               </div>
             </div>
             <p className="pl-5 mt-4">
@@ -24,9 +24,9 @@ const BenefitsInfo = () => {
               whenever you need it
             </p>
           </li>
-          <li className="flex flex-col p-9 w-1/3">
-            <div className="flex">
-              <img src="/peace.png" alt="moreshit" />
+          <li className="flex flex-col p-9 lg:w-1/3">
+            <div className="flex justify-center">
+              <img src="/peace.png" alt="inspire" />
               <div className="flex flex-col justify-center items-center pl-3">
                 <span className="text-4xl font-medium self-start">Take </span>
                 <span className="text-4xl font-medium">inspiration</span>
@@ -37,9 +37,9 @@ const BenefitsInfo = () => {
               and explore snippets around the world
             </p>
           </li>
-          <li className="flex flex-col p-9 w-1/3">
-            <div className="flex">
-              <img src="/share.png" alt="moreshit" />
+          <li className="flex flex-col p-9 lg:w-1/3">
+            <div className="flex justify-center">
+              <img src="/share.png" alt="share" />
               <div className="flex flex-col justify-center items-center pl-3">
                 <span className="text-4xl font-medium self-start">Share </span>
                 <span className="text-4xl font-medium">your work</span>
@@ -60,10 +60,10 @@ const BenefitsInfo = () => {
           className="absolute w-screen h-screen"
         />
         <div className="flex flex-col  items-center justify-center z-30 mt-11 mb-20">
-          <span className="text-white text-7xl font-medium">
+          <span className="text-white xl:text-7xl md:text-5xl text-3xl font-medium text-center">
             Join millions of coders and boost
           </span>
-          <span className="text-white text-7xl font-medium">
+          <span className="text-white xl:text-7xl md:text-5xl text-3xl font-medium text-center">
             your productivity
           </span>
         </div>

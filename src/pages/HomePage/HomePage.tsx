@@ -65,11 +65,11 @@ const HomePage = () => {
                 </button>
               </div>
             </div>
-            <h2 className="text-6xl w-[34rem] my-20 font-medium">
+            <h2 className="md:text-6xl text-3xl md:w-[34rem] my-20 font-medium">
               Pick a language and start exploring
             </h2>
 
-            <div className=" flex items-center mt-5">
+            <div className=" flex md:flex-row flex-col items-center mt-5">
               <Link
                 to={`/game/${randomSnippet.language.toLowerCase()}/${
                   randomSnippet._id
@@ -78,7 +78,7 @@ const HomePage = () => {
               >
                 Let's go
               </Link>
-              <p className="w-72 text-lg ml-10">
+              <p className="w-72 text-lg ml-10 mt-10 md:mt-0">
                 See how peole around the globe thinks and writes code
               </p>
             </div>
