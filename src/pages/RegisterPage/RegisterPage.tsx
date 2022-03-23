@@ -15,7 +15,7 @@ const RegisterPage = () => {
 
   useEffect(() => {
     if (userState.name !== "New exited User") {
-      navigate("/home");
+      navigate("/");
     }
   }, [userState.name, navigate]);
 
@@ -34,7 +34,7 @@ const RegisterPage = () => {
         <div className="z-10 fixed top-0 shadow-md">
           <ul className="flex flex-row backdrop-blur  h-[4.5rem] w-screen pl-9 pr-9 justify-between  items-center">
             <li>
-              <Link to="/home">
+              <Link to="/">
                 <div className="flex flex-row w-9 h-auto justify-between items-left">
                   <img src="cositoNaranja.svg" alt="orange thingy pet" />
                   <span className="font-bold ml-2 pt-1 text-xl">Codespace</span>
