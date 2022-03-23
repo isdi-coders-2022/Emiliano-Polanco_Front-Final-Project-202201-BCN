@@ -10,42 +10,44 @@ const BenefitsInfo = () => {
         <div className="bg-yellowSpace rounded-full h-[4rem] w-[4rem] absolute top-[5rem] right-40"></div>
         <div className="bg-purpleSpace rounded-full h-[1rem] w-[1rem] absolute top-4 left-11"></div>
         <div className="bg-yellowSpace rounded-full h-[2rem] w-[2rem] absolute top-[35rem] left-43"></div>
-        <ul className="flex lg:flex-row flex-col bg-white xl:w-9/12 w-10/12 items-center">
-          <li className="flex flex-col p-9 lg:w-1/3">
+        <ul className="flex lg:flex-row flex-col bg-white xl:w-9/12 w-10/12 items-center xl:mt-0 mt-11">
+          <li className="flex flex-col p-9 lg:w-1/3 ">
             <div className="flex justify-center">
-              <img src="/phone.png" alt="phone" />
+              <img src="/phone.png" className="h-24 w-auto" alt="phone" />
               <div className="flex flex-col justify-center items-center pl-3">
                 <span className="text-4xl font-medium z-10">Your code </span>
                 <span className="text-4xl font-medium z-10"> anywhere</span>
               </div>
             </div>
-            <p className="pl-5 mt-4">
+            <p className="pl-5 mt-4 xl:w-full w-[18rem]">
               You can upload any snippet to your collection and acces to it
               whenever you need it
             </p>
           </li>
           <li className="flex flex-col p-9 lg:w-1/3">
             <div className="flex justify-center">
-              <img src="/peace.png" alt="inspire" />
+              <img src="/peace.png" className="h-24 w-auto" alt="inspire" />
               <div className="flex flex-col justify-center items-center pl-3">
                 <span className="text-4xl font-medium self-start">Take </span>
                 <span className="text-4xl font-medium">inspiration</span>
               </div>
             </div>
-            <p className="pl-5 mt-4">
+            <p className="pl-5 mt-4 xl:w-full w-[18rem]">
               If you write always the same code patrons , take a look at here
               and explore snippets around the world
             </p>
           </li>
           <li className="flex flex-col p-9 lg:w-1/3">
             <div className="flex justify-center">
-              <img src="/share.png" alt="share" />
+              <img src="/share.png" className="h-24 w-auto" alt="share" />
               <div className="flex flex-col justify-center items-center pl-3">
-                <span className="text-4xl font-medium self-start">Share </span>
-                <span className="text-4xl font-medium">your work</span>
+                <span className="text-4xl font-medium z-10 self-start">
+                  Share{" "}
+                </span>
+                <span className="text-4xl font-medium z-10">your work</span>
               </div>
             </div>
-            <p className="pl-5 mt-4">
+            <p className="pl-5 mt-4 xl:w-full w-[18rem]">
               Share your code with everyone and let the world see your aproach
               to that problem
             </p>

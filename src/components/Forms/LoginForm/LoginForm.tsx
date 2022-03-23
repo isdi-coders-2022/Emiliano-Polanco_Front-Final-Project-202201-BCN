@@ -39,10 +39,7 @@ const LoginForm = ({ loginState }: LoginFormProps) => {
             <GoogleLogin
               clientId="444624699992-6j9qum8qhkajkclj2tc3nnifs0o88gqh.apps.googleusercontent.com"
               render={(renderProps) => (
-                <button
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                >
+                <button onClick={renderProps.onClick}>
                   Log in with Google
                 </button>
               )}
