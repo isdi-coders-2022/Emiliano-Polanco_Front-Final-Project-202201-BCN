@@ -42,7 +42,7 @@ const GenericCardEdit = () => {
       dispatch(editSnippetGloballyThunk(editObject));
       updateStateUserAction(userData);
       setTimeout(() => {
-        navigate("/china");
+        navigate("/profiler");
       }, 500);
     },
   });
@@ -85,7 +85,7 @@ const GenericCardEdit = () => {
           />
         </div>
         <div className="flex fle-row justify-between h-1/6 items-center">
-          <Link to="/china">
+          <Link to="/profiler">
             <span className="text-gray-400 pl-5">Return</span>
           </Link>
           <div className="flex fle-row justify-between">
@@ -99,7 +99,7 @@ const GenericCardEdit = () => {
                 };
                 dispatch(deleteSnippetFromUserCollectionThunk(deleteObject));
                 setTimeout(() => {
-                  navigate("/china");
+                  navigate("/profiler");
                 }, 500);
               }}
             >

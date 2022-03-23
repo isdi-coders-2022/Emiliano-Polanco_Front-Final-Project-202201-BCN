@@ -36,7 +36,7 @@ const GenericCardCreate = () => {
         onSubmit={(snippet) => {
           dispatch(createSnippetGlobalAndToUserCollectionThunk(snippet));
           setTimeout(() => {
-            navigate("/china");
+            navigate("/profiler");
           }, 600);
         }}
       >
@@ -94,7 +94,7 @@ const GenericCardCreate = () => {
               />
             </div>
             <div className="flex fle-row justify-between h-1/6 items-center">
-              <Link to="/china">
+              <Link to="/profiler">
                 <span className="text-gray-400 pl-5">Return</span>
               </Link>
               <div className="flex fle-row justify-between">

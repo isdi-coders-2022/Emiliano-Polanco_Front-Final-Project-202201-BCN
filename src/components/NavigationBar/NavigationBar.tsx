@@ -30,7 +30,11 @@ const NavigationBar: React.FC = () => {
         <li>
           <Link to="/">
             <div className="flex flex-row w-9 h-auto justify-between items-center">
-              <img src="/cositoNaranja.svg" alt="orange thingy pet" />
+              <img
+                src="/cositoNaranja.svg"
+                className="w-10 h-10 pt-1"
+                alt="orange thingy pet"
+              />
               <span className="font-bold ml-2 text-xl">Codespace</span>
             </div>
           </Link>
@@ -38,7 +42,7 @@ const NavigationBar: React.FC = () => {
 
         <ul className="flex flex-row  justify-between items-center">
           <li className=" invisible md:visible mx-4">
-            <Link to="/about" className="font-medium">
+            <Link to="/" className="font-medium">
               About
             </Link>
           </li>
@@ -79,7 +83,7 @@ const NavigationBar: React.FC = () => {
               <li className="mx-4 md:visible invisible">
                 <Link to="/login">
                   <div className=" border rounded-3xl md:w-28 h-10 flex justify-center mx-4 items-center">
-                    <span className="text-blueSpace font-medium">Login</span>
+                    <span className="text-blue-700 font-medium">Login</span>
                   </div>
                 </Link>
               </li>
