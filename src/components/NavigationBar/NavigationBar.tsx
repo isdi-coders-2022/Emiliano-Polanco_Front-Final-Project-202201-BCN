@@ -26,7 +26,7 @@ const NavigationBar: React.FC = () => {
 
   return (
     <>
-      <ul className="flex flex-row bg-neutral-50 h-[4.5rem] w-screen pl-9 pr-9 justify-between  items-center z-10 fixed shadow-md">
+      <ul className="flex flex-row bg-neutral-50 h-[4.5rem] w-screen pl-9 pr-9 justify-between  items-center z-50 fixed shadow-md">
         <li>
           <Link to="/home">
             <div className="flex flex-row w-9 h-auto justify-between items-center">
@@ -76,9 +76,9 @@ const NavigationBar: React.FC = () => {
             </li>
           ) : (
             <>
-              <li className="mx-4">
+              <li className="mx-4 md:visible invisible">
                 <Link to="/login">
-                  <div className=" border rounded-3xl w-28 h-10 flex justify-center mx-4 items-center">
+                  <div className=" border rounded-3xl md:w-28 h-10 flex justify-center mx-4 items-center">
                     <span className="text-blueSpace font-medium">Login</span>
                   </div>
                 </Link>
