@@ -14,8 +14,7 @@ function App() {
     <>
       <Suspense fallback={<h1>Loading... </h1>}>
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/game" element={<GamePage />}>
             <Route path="javascript/:id" element={<GamePage />} />
             <Route path="typescript/:id" element={<GamePage />} />

@@ -28,7 +28,7 @@ const NavigationBar: React.FC = () => {
     <>
       <ul className="flex flex-row bg-neutral-50 h-[4.5rem] w-screen pl-9 pr-9 justify-between  items-center z-50 fixed shadow-md">
         <li>
-          <Link to="/home">
+          <Link to="/">
             <div className="flex flex-row w-9 h-auto justify-between items-center">
               <img src="/cositoNaranja.svg" alt="orange thingy pet" />
               <span className="font-bold ml-2 text-xl">Codespace</span>
@@ -63,7 +63,7 @@ const NavigationBar: React.FC = () => {
                           event.preventDefault();
                           dispatch(updateStateUserAction(guestUser));
                           localStorage.removeItem("token");
-                          navigate("/home");
+                          navigate("/");
                         }}
                         className="block px-4 py-2 hover:bg-orange-200"
                       >
