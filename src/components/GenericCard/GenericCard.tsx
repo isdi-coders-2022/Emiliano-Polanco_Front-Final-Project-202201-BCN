@@ -86,7 +86,7 @@ const GenericCard = ({ userData }: GenericCardProps) => {
               It looks like you don't have snippets for now
             </p>
             <img
-              className="h-80 w-auto opacity-60 "
+              className="xl:h-80 md:60 h-52 opacity-60 "
               src="/dinosaur.png"
               alt="background"
             />

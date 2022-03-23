@@ -22,7 +22,7 @@ const InputGame = ({ text }: InputGameProps) => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
             <pre
-              className={`${className} p-10 rounded-md shadow-md`}
+              className={`${className} p-10 rounded-md shadow-md overflow-x-scroll`}
               style={style}
             >
               {tokens.map((line, i) => {
