@@ -31,19 +31,16 @@ const GamePage = () => {
           alt="background"
         />
         <NavigationBar />
-        <div className={`grid grid-cols-6 h-[calc(100vh-4.5rem)] p-12`}>
-          <div>
-            <div className="bg-yellowSpace rounded-2xl h-44 w-24 -translate-y-16 flex items-end p-3">
-              <span className="text-2xl">Start typing</span>
+        <div
+          className={`grid md:grid-cols-6 grid-cols-1 h-[calc(100vh-4.5rem)] p-12`}
+        >
+          <div className="">
+            <div className="bg-yellowSpace rounded-2xl md:h-44 md:w-32  -translate-y-16  md:pt-0 pt-5 justify-center flex md:items-end p-3">
+              <span className="text-xl ">{snippet.title}</span>
             </div>
-            <div className="w-10 my-10 ">
-              <p className="text-4xl font-semibold text-gray-600 pl-2">
-                48 wpm
-              </p>
-            </div>
-            <div className="w-10 my-10 ">
-              <p className="text-4xl font-semibold text-gray-600 pl-2">
-                98% accur.
+            <div className="w-10 md:my-10  my-0  md:visible invisible">
+              <p className="md:text-7xl text-xs font-semibold text-gray-600 pl-2 ">
+                {snippet.language === "JavaScript" ? "JS" : "TS"}
               </p>
             </div>
           </div>

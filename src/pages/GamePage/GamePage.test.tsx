@@ -14,7 +14,7 @@ describe("Given a HomePage component", () => {
           </BrowserRouter>
         </Provider>
       );
-      const text = screen.getByText("Start typing");
+      const text = screen.getByRole("link", { name: "Login" });
 
       expect(text).toBeInTheDocument();
     });
