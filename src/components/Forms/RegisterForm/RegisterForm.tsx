@@ -1,4 +1,4 @@
-import { useFormik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -12,28 +12,19 @@ import { AppStateInterface } from "../../../redux/interfaces/AppErrorStateInterf
 import { setSuccesStateOnAppActionCreator } from "../../../redux/actions/actionCreators/actionCreatorAppState";
 import succesAppStateObject from "../../../redux/utils/succesAppStateObject";
 import GoogleLogin, { GoogleLoginResponse } from "react-google-login";
-
+import * as Yup from "yup";
 interface RegisterFormProps {
   registerState: AppStateInterface;
 }
+const UserDataScheema = Yup.object().shape({
+  name: Yup.string().required("Please put your name"),
+  username: Yup.string().required("Dont forget your username"),
+  password: Yup.string().required("A password seems like a good idea"),
+  email: Yup.string().email("Invalid email").required("Please put your email"),
+});
 
 const RegisterForm = ({ registerState }: RegisterFormProps) => {
   const dispatch = useDispatch();
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      username: "",
-      password: "",
-      email: "",
-    },
-    onSubmit: (registerData) => {
-      const userRegisterData: userRegisterDataInterface = {
-        ...registerData,
-        lastname: "none",
-      };
-      dispatch(registerUserThunk(userRegisterData));
-    },
-  });
   return (
     <div className="bg-white w-[27rem] rounded-lg shadow-md p-12">
       <div>
@@ -81,68 +72,106 @@ const RegisterForm = ({ registerState }: RegisterFormProps) => {
           <p className="text-red-600  pl-3">{registerState.message}</p>
         </div>
       )}
-      <form className="h-fit" onSubmit={formik.handleSubmit}>
-        <label className="block mt-4" htmlFor="name">
-          Name
-        </label>
-        <input
-          className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
-          type="text"
-          id="name"
-          name="name"
-          onChange={formik.handleChange}
-        />
-        <label className="block mt-4" htmlFor="email">
-          Email
-        </label>
-        <input
-          className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
-          type="text"
-          id="email"
-          name="email"
-          onChange={formik.handleChange}
-        />
-        <label className="block mt-4" htmlFor="username">
-          Username
-        </label>
-        <input
-          className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
-          type="text"
-          id="username"
-          name="username"
-          onChange={formik.handleChange}
-        />
-        <label className="block mt-4" htmlFor="password">
-          Password
-        </label>
+      <Formik
+        validateOnChange={false}
+        validateOnBlur={true}
+        initialValues={{
+          name: "",
+          username: "",
+          password: "",
+          email: "",
+        }}
+        onSubmit={(registerData) => {
+          const userRegisterData: userRegisterDataInterface = {
+            ...registerData,
+            lastname: "none",
+          };
+          dispatch(registerUserThunk(userRegisterData));
+        }}
+        validationSchema={UserDataScheema}
+      >
+        {({ errors, touched }) => (
+          <Form className="h-fit">
+            <label className="block mt-4" htmlFor="name">
+              Name
+            </label>
+            {!(errors.name && touched.name) || (
+              <div className="h-11 bg-red-50 rounded flex items-center mb-4">
+                <p className="text-red-600 text-sm pl-3">{errors.name}</p>
+              </div>
+            )}
+            <Field
+              className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
+              type="text"
+              id="name"
+              name="name"
+            />
+            <label className="block mt-4" htmlFor="email">
+              Email
+            </label>
+            {!(errors.email && touched.email) || (
+              <div className="h-11 bg-red-50 rounded flex items-center mb-4">
+                <p className="text-red-600 text-sm pl-3">{errors.email}</p>
+              </div>
+            )}
+            <Field
+              className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
+              type="text"
+              id="email"
+              name="email"
+            />
+            <label className="block mt-4" htmlFor="username">
+              Username
+            </label>
+            {!(errors.username && touched.username) || (
+              <div className="h-11 bg-red-50 rounded flex items-center mb-4">
+                <p className="text-red-600 text-sm  pl-3">{errors.username}</p>
+              </div>
+            )}
+            <Field
+              className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
+              type="text"
+              id="username"
+              name="username"
+            />
+            <label className="block mt-4" htmlFor="password">
+              Password
+            </label>
+            {!(errors.password && touched.password) || (
+              <div className="h-11 bg-red-50 rounded flex items-center mb-4">
+                <p className="text-red-600 text-sm pl-3">{errors.password}</p>
+              </div>
+            )}
+            <Field
+              className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
+              type="password"
+              id="password"
+              name="password"
+            />
 
-        <input
-          className="border pl-3 border-black rounded-md block w-full h-9 mt-3"
-          type="password"
-          id="password"
-          name="password"
-          onChange={formik.handleChange}
-        />
-
-        <button
-          className="bg-blueSpace rounded-md text-white w-full h-10 mt-8 flex justify-center items-center"
-          type="submit"
-        >
-          Sign up
-        </button>
-        <p className="mt-2 ">
-          Already have an account?{" "}
-          <Link
-            to="/login"
-            onClick={() => {
-              dispatch(setSuccesStateOnAppActionCreator(succesAppStateObject));
-            }}
-            className="text-blueSpace"
-          >
-            Login
-          </Link>
-        </p>
-      </form>
+            <button
+              className="bg-blueSpace rounded-md text-white w-full h-10 mt-8 flex justify-center items-center"
+              type="submit"
+            >
+              Sign up
+            </button>
+            <p className="mt-2 ">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                onClick={() => {
+                  dispatch(
+                    setSuccesStateOnAppActionCreator(succesAppStateObject)
+                  );
+                }}
+                className="text-blueSpace"
+              >
+                Login
+              </Link>
+            </p>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

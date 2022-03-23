@@ -90,7 +90,7 @@ const LoginForm = ({ loginState }: LoginFormProps) => {
             </label>
             {!(errors.username && touched.username) || (
               <div className="h-11 bg-red-50 rounded flex items-center mb-4">
-                <p className="text-red-600  pl-3">{errors.username}</p>
+                <p className="text-red-600 text-sm pl-3">{errors.username}</p>
               </div>
             )}
             <Field
@@ -105,7 +105,7 @@ const LoginForm = ({ loginState }: LoginFormProps) => {
             </div>
             {!(errors.password && touched.password) || (
               <div className="h-11 bg-red-50 rounded flex items-center mb-4">
-                <p className="text-red-600  pl-3">{errors.password}</p>
+                <p className="text-red-600 text-sm pl-3">{errors.password}</p>
               </div>
             )}
             <Field
