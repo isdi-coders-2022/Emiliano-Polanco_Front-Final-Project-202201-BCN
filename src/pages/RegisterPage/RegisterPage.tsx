@@ -45,7 +45,7 @@ const RegisterPage = () => {
           <div className="h-px bg-slate-300 "></div>
         </div>
         <div className="h-[4.5rem]"></div>
-        <div className={`flex justify-center  p-12`}>
+        <div className={`flex justify-center   md:p-12`}>
           <RegisterForm registerState={appState} />
         </div>
       </motion.div>

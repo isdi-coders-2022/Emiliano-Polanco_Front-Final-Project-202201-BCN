@@ -23,7 +23,7 @@ const ProfileUserPage = () => {
         alt="background"
       />
       <NavigationBar />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ml-6 mr-6 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:mx-6 md:mt-6">
         <motion.div
           initial={{ scaleY: 0.7, opacity: 0 }}
           animate={{ scaleY: 1, opacity: 1 }}

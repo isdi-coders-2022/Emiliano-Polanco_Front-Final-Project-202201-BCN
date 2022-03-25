@@ -21,7 +21,7 @@ const GenericCardCreate = () => {
       animate={{ scaleY: 1, opacity: 1 }}
       exit={{ scaleY: 0.7 }}
       transition={{ duration: 0.2 }}
-      className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-10 flex flex-col"
+      className="bg-white md:w-2/3 md:h-3/4 h-screen rounded-2xl shadow-md md:p-10 p-10 flex flex-col"
     >
       <h2 className="text-2xl font-medium">Create a snippet</h2>
       <Formik

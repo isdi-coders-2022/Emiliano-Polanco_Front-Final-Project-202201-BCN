@@ -32,10 +32,10 @@ const GamePage = () => {
         />
         <NavigationBar />
         <div
-          className={`grid md:grid-cols-6 grid-cols-1 h-[calc(100vh-4.5rem)] p-12`}
+          className={`grid md:grid-cols-6 grid-cols-1 h-[calc(100vh-4.5rem)] md:p-12`}
         >
           <div className="">
-            <div className="bg-yellowSpace rounded-2xl md:h-44 md:w-32  -translate-y-16  md:pt-0 pt-5 justify-center flex md:items-end p-3">
+            <div className="bg-yellowSpace rounded-2xl md:h-44 md:w-32  md:-translate-y-16  md:pt-0 pt-5 justify-center flex md:items-end p-3">
               <span className="text-xl ">{snippet.title}</span>
             </div>
             <div className="w-10 md:my-10  my-0  md:visible invisible">

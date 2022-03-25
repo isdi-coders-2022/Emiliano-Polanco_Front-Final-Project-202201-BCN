@@ -49,7 +49,7 @@ const LoginPage = () => {
         </div>
         <div className="h-[4.5rem]"></div>
 
-        <div className={`flex justify-center  p-12`}>
+        <div className={`flex justify-center  md:p-12`}>
           <LoginForm loginState={appState} />
         </div>
       </motion.div>
