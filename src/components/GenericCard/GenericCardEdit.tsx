@@ -52,7 +52,7 @@ const GenericCardEdit = () => {
       animate={{ scaleY: 1, opacity: 1 }}
       exit={{ scaleY: 0.7 }}
       transition={{ duration: 0.2 }}
-      className="bg-white w-2/3 h-2/3 rounded-2xl shadow-md p-10 flex flex-col"
+      className="bg-white md:w-2/3 md:h-3/4 h-screen rounded-2xl shadow-md p-10 flex flex-col"
     >
       <h2 className="text-2xl font-medium">Edit your snippet</h2>
       <form className="h-full pt-8" onSubmit={formik.handleSubmit}>
@@ -86,7 +86,7 @@ const GenericCardEdit = () => {
         </div>
         <div className="flex fle-row justify-between h-1/6 items-center">
           <Link to="/profiler">
-            <span className="text-gray-400 pl-5">Return</span>
+            <span className="text-gray-400 md:pl-5">Return</span>
           </Link>
           <div className="flex fle-row justify-between">
             <button

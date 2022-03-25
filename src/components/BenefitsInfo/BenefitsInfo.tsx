@@ -55,14 +55,14 @@ const BenefitsInfo = () => {
           <li className="flex flex-col"></li>
         </ul>
       </div>
-      <div className="flex items-center justify-end relative h-screen flex-col">
+      <div className="flex items-center justify-end relative md:h-screen h-[calc(100vh/3)] flex-col">
         <img
           src="/bottomBackground.png"
           alt="waves background"
-          className="absolute w-screen h-screen"
+          className="absolute w-screen md:h-screen h-[calc(100vh/3)]"
         />
-        <div className="flex flex-col  items-center justify-center z-30 mt-11 mb-20">
-          <span className="text-white xl:text-7xl md:text-5xl text-3xl font-medium text-center">
+        <div className="flex flex-col translate-y-20 md:translate-y-0 items-center justify-center z-30 mt-11 mb-20">
+          <span className="text-white xl:text-7xl md:text-5xl  text-3xl font-medium text-center">
             Join millions of coders and boost
           </span>
           <span className="text-white xl:text-7xl md:text-5xl text-3xl font-medium text-center">

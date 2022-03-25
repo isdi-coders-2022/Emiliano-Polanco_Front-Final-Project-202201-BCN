@@ -33,7 +33,9 @@ const HomePage = () => {
           alt="background"
         />
         <NavigationBar />
-        <div className={`flex  justify-center h-[calc(100vh-4.5rem)] p-12`}>
+        <div
+          className={`flex  justify-center h-[calc(100vh-4.5rem)] md:p-12 py-12`}
+        >
           <div className="flex-col w-4/5">
             <div className="flex justify-center">
               <div className="flex items-center flex-col">
