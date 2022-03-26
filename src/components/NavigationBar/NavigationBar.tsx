@@ -82,7 +82,7 @@ const NavigationBar: React.FC = () => {
             <>
               <li className="mx-4 md:visible invisible">
                 <Link to="/login">
-                  <div className=" border rounded-3xl md:w-28 h-10 flex justify-center mx-4 items-center">
+                  <div className=" border border-gray-400 rounded-3xl md:w-28 h-10 flex justify-center mx-4 items-center">
                     <span className="text-blue-700 font-medium">Login</span>
                   </div>
                 </Link>
